@@ -1,838 +1,143 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adilet Qorgau</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#0f172a;
-color:white;
-line-height: 1.6;
-}
-
-header{
-padding:100px 20px;
-text-align:center;
-background:linear-gradient(135deg,#0f172a,#1e293b);
-}
-
-h1{
-font-size:60px;
-margin-bottom:10px;
-font-weight: bold;
-}
-
-h2{
-font-size:32px;
-text-align:center;
-margin-bottom:20px;
-position: relative;
-}
-
-p{
-font-size:18px;
-color:#cbd5e1;
-}
-
-.button{
-display:inline-block;
-margin-top:30px;
-padding:15px 40px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-border-radius:12px;
-font-size:18px;
-font-weight: bold;
-transition: background 0.3s, transform 0.2s;
-}
-
-.button:hover {
-background:#1d4ed8;
-transform: translateY(-2px);
-}
-
-.section{
-padding:80px 20px;
-max-width:1000px;
-margin:auto;
-border-bottom: 1px solid #334155;
-}
-
-.about-text {
-font-size: 19px;
-max-width: 800px;
-margin: 0 auto;
-text-align: center;
-color: #e2e8f0;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:20px;
-}
-
-.card{
-background:#1e293b;
-padding:35px;
-border-radius:20px;
-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.card h3 {
-margin-top: 0;
-color: #38bdf8;
-font-size: 22px;
-}
-
-/* СТИЛИ ДЛЯ РАСKРЫВАЮЩИХСЯ ПАПОК */
-.folder-container {
-margin-bottom: 15px;
-background: #1e293b;
-border-radius: 12px;
-border: 1px solid #334155;
-overflow: hidden;
-}
-
-.folder-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 18px 25px;
-background: #1e293b;
-cursor: pointer;
-user-select: none;
-transition: background 0.2s;
-}
-
-.folder-header:hover {
-background: #24324d;
-}
-
-.folder-title {
-font-size: 18px;
-font-weight: bold;
-color: #f1f5f9;
-display: flex;
-align-items: center;
-gap: 12px;
-}
-
-.folder-icon {
-font-size: 14px;
-transition: transform 0.2s;
-color: #94a3b8;
-}
-
-/* Скрытое содержимое папки первого уровня */
-.folder-content {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.3s ease-out;
-background: #151f32;
-}
-
-/* СТИЛИ ДЛЯ ВЛОЖЕННЫХ ПОДПАПОК (УРОВЕНЬ 2) */
-.sub-folder {
-border-top: 1px solid #24324d;
-background: #162235;
-}
-
-.sub-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 14px 35px;
-cursor: pointer;
-user-select: none;
-transition: background 0.2s;
-}
-
-.sub-header:hover {
-background: #1d2d47;
-}
-
-.sub-title {
-font-size: 16px;
-font-weight: 600;
-color: #38bdf8;
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.sub-content {
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.3s ease-out;
-background: #0f172a;
-}
-
-/* Строки с заявлениями внутри папок */
-.shop-row {
-display: flex;
-align-items: center;
-justify-content: space-between;
-padding: 15px 25px;
-border-bottom: 1px solid #1e293b;
-gap: 15px;
-}
-
-/* Смещение для документов внутри подпапок */
-.sub-content .shop-row {
-padding-left: 50px;
-padding-right: 35px;
-}
-
-.shop-row:last-child {
-border-bottom: none;
-}
-
-.doc-name {
-font-size: 16px;
-color: #cbd5e1;
-font-weight: 500;
-flex-grow: 1;
-}
-
-.doc-actions {
-display: flex;
-align-items: center;
-gap: 20px;
-flex-shrink: 0;
-}
-
-.doc-price {
-font-size: 17px;
-font-weight: bold;
-color: #10b981;
-white-space: nowrap;
-}
-
-.btn-buy {
-display: inline-block;
-padding: 8px 18px;
-background: #2563eb;
-color: white;
-text-decoration: none;
-border-radius: 8px;
-font-weight: bold;
-font-size: 14px;
-transition: background 0.2s;
-white-space: nowrap;
-}
-
-.btn-buy:hover {
-background: #1d4ed8;
-}
-
-/* Разворот стрелочек при активации */
-.folder-container.active > .folder-header .folder-icon,
-.sub-folder.active > .sub-header .folder-icon {
-transform: rotate(90deg);
-color: #f1f5f9;
-}
-
-/* Адаптивность под мобильные телефоны */
-@media (max-width: 600px) {
-.shop-row {
-flex-direction: column;
-align-items: flex-start;
-gap: 10px;
-padding: 15px 20px !important;
-}
-.doc-actions {
-width: 100%;
-justify-content: space-between;
-border-top: 1px dashed #334155;
-padding-top: 10px;
-}
-}
-
-.represent-box {
-background: linear-gradient(135deg, #1e293b, #0f172a);
-padding: 40px;
-border-radius: 25px;
-border: 1px solid #3b82f6;
-margin-top: 20px;
-}
-
-.represent-item {
-margin-bottom: 20px;
-padding-left: 30px;
-position: relative;
-font-size: 18px;
-}
-
-.represent-item::before {
-content: "⚡";
-position: absolute;
-left: 0;
-top: 0;
-color: #3b82f6;
-}
-
-.case-card {
-background: #1e293b;
-padding: 30px;
-border-radius: 20px;
-border-left: 5px solid #10b981;
-margin-bottom: 25px;
-}
-
-.case-card h4 {
-margin: 0 0 10px 0;
-font-size: 20px;
-color: #10b981;
-}
-
-.case-meta {
-font-size: 15px;
-color: #94a3b8;
-margin-bottom: 10px;
-}
-
-.case-meta strong {
-color: #f1f5f9;
-}
-
-footer{
-text-align:center;
-padding:50px;
-color:#94a3b8;
-background: #0b0f19;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<h1>Adilet Qorgau</h1>
-<p>Юридическая помощь и защита прав граждан Казахстана</p>
-<a class="button" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%B0%20%D1%8E%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F." target="_blank">
-Получить консультацию
-</a>
-</header>
-
-<section class="section">
-<h2>О компании «Adilet Qorgau»</h2>
-<div class="about-text">
-<p>Мы — команда квалифицированных юристов, специализирующаяся на защите прав граждан Казахстана перед банками, микрофинансовыми организациями (МФО) и судебными исполнителями. Наша цель — вернуть вам спокойствие, защитить от давления коллекторов и законным путем решить проблемы с долгами и арестами. Мы беремся за дела любой сложности и работаем на результат.</p>
-</div>
-</section>
-
-<section class="section">
-<h2>Наши услуги</h2>
-<div class="cards">
-<div class="card">
-<h3>МФО и банки</h3>
-<p>Помощь по займам, снижению процентов, защите от коллекторов и ведению судебных дел.</p>
-</div>
-<div class="card">
-<h3>Снятие запрета</h3>
-<p>Защита прав при ограничениях на выезд из Казахстана, арестах банковских карт и счетов ЧСИ.</p>
-</div>
-<div class="card">
-<h3>Семейные споры</h3>
-<p>Полное ведение дел по расторжению брака, разделу имущества, взысканию алиментов без вашего присутствия.</p>
-</div>
-<div class="card">
-<h3>Договоры и долги</h3>
-<p>Взыскание долгов по распискам, урегулирование споров по договорам аренды, купли-продажи и займа.</p>
-</div>
-<div class="card">
-<h3>Защита прав</h3>
-<p>Судебные споры с застройщиками, магазинами, автосалонами, а также взыскание ущерба при заливах жилья.</p>
-</div>
-<div class="card">
-<h3>Суды и жалобы</h3>
-<p>Профессиональная подготовка исков, апелляций, официальных жалоб и юридических документов.</p>
-</div>
-</div>
-</section>
-
-<section class="section">
-<h2>Магазин заявлений и бланков</h2>
-<p style="text-align: center; color: #94a3b8; margin-bottom: 40px;">Нажмите на нужную категорию, чтобы открыть список доступных шаблонов:</p>
-
 <div class="folder-container">
 <div class="folder-header" onclick="toggleMainFolder(this)">
-<div class="folder-title">📁 Раздел 1: Семья и дети</div>
+<div class="folder-title">📁 Раздел 7: Имущество, жилье, строительство, собственность</div>
 <div class="folder-icon">▶</div>
 </div>
 <div class="folder-content">
 
     <div class="sub-folder">
         <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 1. О расторжении брака</div>
+            <div class="sub-title">📁 1. Признание права собственности</div>
             <div class="folder-icon">▶</div>
         </div>
         <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Исковое заявление о расторжении брака</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%20%D1%80%D0%B0%D1%81%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B1%D1%80%D0%B0%D0%BA%D0%B0" target="_blank">Купить</a></div>
+                <div class="doc-name">Иск о признании договора купли-продажи, заключенного под влиянием насилия/угроз, недействительным</div>
+                <div class="doc-actions"><div class="doc-price">3 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0%20%D0%BA%D1%83%D0%BF%D0%BB%D0%B8-%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D0%B6%D0%B8%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D0%BF%D0%BE%D0%B4%20%D0%B2%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC%20%D0%BD%D0%B0%D1%81%D0%B8%D0%BB%D0%B8%D1%8F" target="_blank">Купить</a></div>
+            </div>
+            <div class="shop-row">
+                <div class="doc-name">Иск о признании права собственности по приобретательной давности (на жилье/участок)</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BF%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B5%D0%B1%D1%80%D0%B5%D1%82%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9%20%D0%B4%D0%B0%D0%B2%D0%BD%D0%BE%D1%81%D1%82%D0%B8" target="_blank">Купить</a></div>
+            </div>
+            <div class="shop-row">
+                <div class="doc-name">Иск о признании права собственности на самовольную пристройку / строение</div>
+                <div class="doc-actions"><div class="doc-price">3 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D1%83%D1%8E%20%D0%BD%D0%B0%20%D1%81%D0%B0%D0%BC%D0%BE%D0%B2%D0%BE%D0%BB%D1%8C%D0%BD%D1%83%D1%8E%20%D0%BF%D1%80%D0%B8%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D1%83" target="_blank">Купить</a></div>
+            </div>
+            <div class="shop-row">
+                <div class="doc-name">Иск о признании права долевой собственности на домовладение</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%20%D0%B4%D0%BE%D0%BB%D0%B5%D0%B2%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8" target="_blank">Купить</a></div>
+            </div>
+            <div class="shop-row">
+                <div class="doc-name">Иск о признании права собственности на приватизируемое жилище</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BD%D0%B0%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B8%D0%B7%D0%B8%D1%80%D1%83%D0%B5%D0%BC%D0%BE%D0%B5%20%D0%B6%D0%B8%D0%BB%D0%B8%D1%89%D0%B5" target="_blank">Купить</a></div>
+            </div>
+            <div class="shop-row">
+                <div class="doc-name">Иск о признании права собственности на недвижимое имущество (общее)</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BF%D1%80%D0%B0%D0%B2%D0%B0%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BD%D0%B0%20%D0%BD%D0%B5%D0%B4%D0%B2%D0%B8%D0%B6%D0%B8%D0%BC%D0%BE%D0%B5%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BE" target="_blank">Купить</a></div>
             </div>
         </div>
     </div>
 
     <div class="sub-folder">
         <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 2. Алименты</div>
+            <div class="sub-title">📁 2. Жилищные споры</div>
             <div class="folder-icon">▶</div>
         </div>
         <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Заявление о вынесении судебного приказа о взыскании алиментов</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%97%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%20%D0%B2%D1%8B%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%81%D1%83%D0%B4%D0%B5%D0%B1%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%B8%D0%BA%D0%B0%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление о разделе общего совместного имущества супругов</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%20%D0%BE%D0%B1%D1%89%D0%B5%D0%B3%D0%BE%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D1%81%D1%83%D0%BF%D1%80%D1%83%D0%B3%D0%BE%D0%B2" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Иск о взыскании средств на содержание родителя</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D1%81%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B2%20%D0%BD%D0%B0%20%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8F" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление о выселении из жилого помещения без предоставления другого жилья</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D1%8B%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%B7%20%D0%B6%D0%B8%D0%BB%D0%BE%D0%B3%D0%BE%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8%D1%8F" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Иск о взыскании алиментов в твердой денежной сумме</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%B2%20%D1%82%D0%B2%D0%B5%D1%80%D0%B4%D0%BE%D0%B9%20%D0%B4%D0%B5%D0%BD%D0%B5%D0%B6%D0%BD%D0%BE%D0%B9%20%D1%81%D1%83%D0%BC%D0%BC%D0%B5" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление о вселении в жилое помещение</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B2%20%D0%B6%D0%B8%D0%BB%D0%BE%D0%B5%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Иск об изменении размера алиментов</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%D0%B1%20%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Иск об уменьшении размера алиментов</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%D0%B1%20%D1%83%D0%BC%D0%B5%D0%BD%D1%8C%D1%88%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%80%D0%B0%D0%B7%D0%BC%D0%B5%D1%80%D0%B0%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление об установлении отцовства и взыскании алиментов</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BE%20%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%B0%20%D0%B8%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Иск о взыскании алиментов на содержание супруги до достижения ребенком 3-х лет</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BD%D0%B0%20%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%81%D1%83%D0%BF%D1%80%D1%83%D0%B3%D0%B8%20%D0%B4%D0%BE%203%20%D0%BB%D0%B5%D1%82" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании алиментов на несовершеннолетних детей</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BD%D0%B0%20%D0%BD%D0%B5%D1%81%D0%BE%D0%B2%D0%B5%D1%80%D1%88%D0%B5%D0%BD%D0%BD%D0%BE%D0%BB%D0%B5%D1%82%D0%BD%D0%B8%D1%85%20%D0%B4%D0%B5%D1%82%D0%B5%D0%B9" target="_blank">Купить</a></div>
+                <div class="doc-name">Иск о признании лица утратившим право пользования жилым помещением (выписка из квартиры)</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BB%D0%B8%D1%86%D0%B0%20%D1%83%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D1%88%D0%B8%D0%BC%20%D0%BF%D1%80%D0%B0%D0%B2%D0%BE%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F" target="_blank">Купить</a></div>
             </div>
         </div>
     </div>
 
     <div class="sub-folder">
         <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 3. Споры по поводу ребенка</div>
+            <div class="sub-title">📁 3. Защита имущества / устранение помех</div>
             <div class="folder-icon">▶</div>
         </div>
         <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Заявление об установлении факта регистрации рождения</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8%20%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F" target="_blank">Купить</a></div>
+                <div class="doc-name">Заявление об установлении факта наличия документов, подтверждающих владение, пользование и распоряжение недвижимостью</div>
+                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D0%BD%D0%B0%D0%BB%D0%B8%D1%87%D0%B8%D1%8F%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BD%D0%B0%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BE" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Заявление об установлении факта регистрации усыновления</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8%20%D1%83%D1%81%D1%8B%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F" target="_blank">Купить</a></div>
+                <div class="doc-name">Иск об устранении препятствий в пользовании собственником своим имуществом (негаторный иск)</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D1%8B%D1%81%D0%B2%D0%BE%D0%B1%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BE%D1%82%20%D0%BF%D1%80%D0%B5%D0%BF%D1%8F%D1%82%D1%81%D1%82%D0%B2%D0%B8%D0%B9%20%D0%B2%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BE%D0%BC" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Исковое заявление об определении места жительства ребенка</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D1%8B%D0%BD%D0%B5%D1%81%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%81%D1%83%D0%B4%D0%B5%D0%B1%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%BF%D1%80%D0%B8%D0%BA%D0%B0%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление об определении порядка общения с ребенком</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D0%BE%D1%80%D1%8F%D0%B4%D0%BA%D0%B5%20%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F%20%D1%81%20%D1%80%D0%B5%D0%B1%D0%B5%D0%BD%D0%BA%D0%BE%D0%BC" target="_blank">Купить</a></div>
+                <div class="doc-name">Иск об истребовании имущества из чужого незаконного владения (виндикационный иск)</div>
+                <div class="doc-actions"><div class="doc-price">3 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B8%D0%BD%D0%B4%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
             </div>
         </div>
     </div>
 
     <div class="sub-folder">
         <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 4. Отцовство / родительские отношения</div>
+            <div class="sub-title">📁 4. Арест / запрет</div>
             <div class="folder-icon">▶</div>
         </div>
         <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Заявление об установлении факта регистрации отцовства</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8%20%D0%BE%D1%82%D1%86%D0%BE%D0%B2%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление об освобождении имущества от ареста (исключении из описи ЧСИ)</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%81%D0%BD%D1%8F%D1%82%D0%B8%D0%B8%20%D0%B0%D1%80%D0%B5%D1%81%D1%82%D0%B0%20%D1%81%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Заявление об установлении факта родственных отношений</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D1%80%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D1%85%20%D0%BE%D1%82%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D0%B9" target="_blank">Купить</a></div>
+                <div class="doc-name">Заявление в суд об отмене мер по обеспечению иска (снятие судебного ареста/запрета)</div>
+                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%97%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%20%D1%81%D0%BD%D1%8F%D1%82%D0%B8%D0%B8%20%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B8%D1%81%D0%BA%D0%B0" target="_blank">Купить</a></div>
             </div>
         </div>
     </div>
 
     <div class="sub-folder">
         <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 5. Усыновление</div>
+            <div class="sub-title">📁 5. Строительство</div>
             <div class="folder-icon">▶</div>
         </div>
         <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Заявление в суд об усыновлении (удочерении) ребенка</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%97%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%20%D1%83%D1%81%D1%8B%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%80%D0%B5%D0%B1%D0%B5%D0%BD%D0%BA%D0%B0" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление о сносе незаконного (самовольного) строения</div>
+                <div class="doc-actions"><div class="doc-price">3 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%81%D0%BD%D0%BE%D1%81%D0%B5%20%D0%BD%D0%B5%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D1%81%D1%82%D1%80%D0%BE%D0%B5%D0%BD%D0%B8%D1%8F" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Исковое заявление об отмене усыновления (удочерения)</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BE%D1%82%D0%BC%D0%B5%D0%BD%D0%B5%20%D1%83%D1%81%D1%8B%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%80%D0%B5%D0%B1%D0%B5%D0%BD%D0%BA%D0%B0" target="_blank">Купить</a></div>
+                <div class="doc-name">Иск к застройщику о безвозмездном устранении недостатков и дефектов объекта строительства</div>
+                <div class="doc-actions"><div class="doc-price">3 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BA%20%D0%B7%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D1%89%D0%B8%D0%BA%D1%83%20%D0%BE%20%D0%BD%D0%B5%D0%B4%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BA%D0%B0%D1%85" target="_blank">Купить</a></div>
             </div>
         </div>
     </div>
 
     <div class="sub-folder">
         <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 6. Супружеское имущество</div>
+            <div class="sub-title">📁 6. Прекращение права собственности</div>
             <div class="folder-icon">▶</div>
         </div>
         <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Исковое заявление о разделе совместного имущества супругов</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%20%D1%81%D0%BE%D0%B2%D0%BC%D0%B5%D1%81%D1%82%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D1%81%D1%83%D0%BF%D1%80%D1%83%D0%B3%D0%BE%D0%B2" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление об устранении нарушений права пользования собственника нежилым помещением</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B5%D0%B6%D0%B8%D0%BB%D1%8B%D0%BC%20%D0%BF%D0%BE%D0%BC%D0%B5%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC" target="_blank">Купить</a></div>
             </div>
             <div class="shop-row">
-                <div class="doc-name">Исковое заявление о признании имущества личной собственностью одного из супругов</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0%20%D0%BB%D0%B8%D1%87%D0%BD%D0%BE%D0%B9%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D1%8C%D1%8E" target="_blank">Купить</a></div>
+                <div class="doc-name">Иск о признании недействительным свидетельства о праве на собственность / наследство</div>
+                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D1%81%D0%B2%D0%B8%D0%B4%D0%B5%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
             </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 7. Воспитание родителей</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
             <div class="shop-row">
-                <div class="doc-name">Заявление об установлении факта регистрации брака</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8%20%D0%B1%D1%80%D0%B0%D0%BA%D0%B0" target="_blank">Купить</a></div>
+                <div class="doc-name">Исковое заявление о прекращении права собственности на долю в общем имуществе с выплатой компенсации</div>
+                <div class="doc-actions"><div class="doc-price">3 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B5%D0%BA%D1%80%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%90%D0%B0%D0%B2%D0%B0%20%D1%81%D0%BE%D0%B1%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%BD%D0%B0%20%D0%B4%D0%BE%D0%BB%D1%8E" target="_blank">Купить</a></div>
             </div>
         </div>
     </div>
 
 </div>
 </div>
-
-<div class="folder-container">
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div class="folder-title">📁 Раздел 2: Наследственные дела и факты</div>
-<div class="folder-icon">▶</div>
-</div>
-<div class="folder-content">
-    <div class="shop-row">
-        <div class="doc-name">Исковое заявление о разделе наследственного имущества</div>
-        <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B5%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%20%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
-    </div>
-    <div class="shop-row">
-        <div class="doc-name">Исковое заявление о продлении срока для принятия наследства</div>
-        <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B4%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%81%D1%80%D0%BE%D0%BA%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D0%B8%D1%8F%20%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
-    </div>
-    <div class="shop-row">
-        <div class="doc-name">Заявление об установлении факта, имеющего юридическое значение (ошибки в док.)</div>
-        <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D0%B8%D0%BC%D0%B5%D1%8E%D1%89%D0%B5%D0%B3%D0%BE%20%D1%8E%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank">Купить</a></div>
-    </div>
-</div>
-</div>
-
-<div class="folder-container">
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div class="folder-title">📁 Раздел 3: Долги, задолженность и взыскание денег</div>
-<div class="folder-icon">▶</div>
-</div>
-<div class="folder-content">
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 1. Задолженность (общая)</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании долга по расписке (договору займа)</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B4%D0%BE%D0%BB%D0%B3%D0%B0%20%D0%BF%D0%BE%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%BA%D0%B5" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании задолженности по договору</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%B4%D0%BE%D0%BB%D0%B6%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Заявление о вынесении судебного приказа о взыскании задолженности</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%A1%D1%83%D0%B4%D0%B5%D0%B1%D0%BD%D1%8B%D0%B9%20%D0%BF%D1%80%D0%B8%D0%BA%D0%B0%D0%B7%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%B4%D0%BE%D0%BB%D0%B6%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Иск о взыскании неустойки (пени) и убытков за нарушение обязательств</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B5%D1%83%D1%81%D1%82%D0%BE%D0%B9%D0%BA%D0%B8%20%D0%B8%20%D1%83%D0%B1%D1%8B%D1%82%D0%BA%D0%BE%D0%B2" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 2. Аренда имущества</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании задолженности по договору аренды</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B4%D0%BE%D0%BB%D0%B3%D0%B0%20%D0%BF%D0%BE%20%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%B5" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о расторжении договора аренды и выселении</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%80%D0%B0%D1%81%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D1%8B%20%D0%B8%20%D0%B2%D1%8B%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Иск о взыскании ущерба, причиненного арендованному имуществу</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D1%83%D1%89%D0%B5%D1%80%D0%B1%D0%B0%20%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D0%BE%D0%BC%D1%83%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 3. Задаток, регресс и залог</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании в порядке регресса</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B2%20%D0%BF%D0%BE%D1%80%D1%8F%D0%B4%D0%BA%D0%B5%20%D1%80%D0%B5%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B0" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании суммы задатка в двойном размере</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%B4%D0%B0%D1%82%D0%BA%D0%B0" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление об обращении взыскания на заложенное имущество</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BE" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 4. Возврат денег и имущества</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Иск о взыскании задолженности в связи с исполнением гарантом обязательства</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BA%20%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%B8%D0%BA%D1%83%20%D0%BE%D1%82%20%D0%B3%D0%B0%D1%80%D0%B0%D0%BD%D1%82%D0%B0" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление об истребовании имущества из чужого незаконного владения</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%D0%B1%20%D0%B8%D1%81%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о взыскании суммы неосновательного обогащения</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BD%D0%B5%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%20%D0%BE%D0%B1%D0%BE%D0%B3%D0%B0%D1%89%D0%B5%D0%BD%D0%B8%D0%B8" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о возврате товара и взыскании уплаченных сумм</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%BE%D0%B7%D0%B2%D1%80%D0%B0%D1%82%D0%B5%20%D1%82%D0%BE%D0%B2%D0%B0%D1%80%D0%B0" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="folder-container">
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div class="folder-title">📁 Раздел 4: Договоры и коммерческие споры</div>
-<div class="folder-icon">▶</div>
-</div>
-<div class="folder-content">
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 1. Расторжение / неисполнение договора</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Иск о неисполнении договорных обязательств</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BD%D0%B5%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%BD%D1%8B%D1%85%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о расторжении договора</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D1%80%D0%B0%D1%81%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Иск о признании незаконным одностороннего расторжения договора</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B5%D0%B7%D0%B0%D0%BA%D0%BE%D0%BD%D0%BD%D1%8B%D0%BC%20%D0%BE%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D0%BE%D1%80%D0%BE%D0%BD%D0%BD%D0%B5%D0%B3%D0%BE%20%D1%80%D0%B0%D1%81%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D1%8F" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 2. Признание договора недействительным</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о признании недействительным договора и взыскании суммы</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80%D0%B0" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 3. Заключение основного договора / акты</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Иск о взыскании неустойки в связи с неисполнением обязательств по договору</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B5%D1%83%D1%81%D1%82%D0%BE%D0%B9%D0%BA%D0%B8" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Исковое заявление о понуждении заключить основной договор</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D0%BE%D0%BD%D1%83%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%BA%D0%BB%D1%8E%D1%87%D0%B8%D1%82%D1%8C%20%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D0%BE%D0%B9%20%D0%B4%D0%BE%D0%B3%D0%BE%D0%B2%D0%BE%D1%80" target="_blank">Купить</a></div>
-            </div>
-            <div class="shop-row">
-                <div class="doc-name">Иск о признании обязательств по договору исполненными</div>
-                <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%BE%D0%B1%D1%8F%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%20%D0%B9%D1%81%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%D0%B8" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="sub-folder">
-        <div class="sub-header" onclick="toggleSubFolder(event, this)">
-            <div class="sub-title">📁 4. Корпоративные споры</div>
-            <div class="folder-icon">▶</div>
-        </div>
-        <div class="sub-content">
-            <div class="shop-row">
-                <div class="doc-name">Иск о признании актов выполненных работ подряда действительными</div>
-                <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BA%D1%82%D0%BE%D0%B2%20%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%BD%D1%8B%D1%85%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%20%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%D0%B8" target="_blank">Купить</a></div>
-            </div>
-        </div>
-    </div>
-
-</div>
-</div>
-
-<div class="folder-container">
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div class="folder-title">📁 Раздел 5: Трудовые споры</div>
-<div class="folder-icon">▶</div>
-</div>
-<div class="folder-content">
-    <div class="shop-row">
-        <div class="doc-name">Исковое заявление о взыскании заработной платы и компенсации за задержку</div>
-        <div class="doc-actions"><div class="doc-price">2 000 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D1%80%D0%BF%D0%BB%D0%B0%D1%82%D1%8B" target="_blank">Купить</a></div>
-    </div>
-    <div class="shop-row">
-        <div class="doc-name">Исковое заявление о восстановлении на работе и оплате за время вынужденного прогула</div>
-        <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BE%20%D0%B2%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BD%D0%B0%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B5" target="_blank">Купить</a></div>
-    </div>
-</div>
-</div>
-
-<div class="folder-container">
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div class="folder-title">📁 Раздел 6: Административные споры с госорганами (АППК)</div>
-<div class="folder-icon">▶</div>
-</div>
-<div class="folder-content">
-    <div class="shop-row">
-        <div class="doc-name">Административный иск об оспаривании действий (бездействия) или решений госорганов</div>
-        <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%90%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%82%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9%20%D0%B8%D1%81%D0%BA%20%D0%BA%20%D0%B3%D0%BE%D1%81%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D1%83" target="_blank">Купить</a></div>
-    </div>
-    <div class="shop-row">
-        <div class="doc-name">Административный иск об оспаривании действий (бездействия) ЧСИ</div>
-        <div class="doc-actions"><div class="doc-price">2 500 ₸</div><a class="btn-buy" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BA%D1%83%D0%BF%D0%B8%D1%82%D1%8C%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD:%20%D0%98%D1%81%D0%BA%20%D0%BD%D0%B0%20%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%8F%20%D0%A7%D0%A1%D0%98" target="_blank">Купить</a></div>
-    </div>
-</div>
-</div>
-
-</section>
-
-<section class="section">
-<h2>Полное юридическое сопровождение (Представительство)</h2>
-<p style="text-align: center; font-size: 19px; max-width: 800px; margin: 0 auto 30px auto;">
-<strong>Боитесь допустить ошибку при самостоятельном заполнении?</strong> Мы готовы полностью взять ваше дело на себя, выступить вашими официальными представителями на судебных и государственных порталах Казахстана и провести процедуру под ключ.
-</p>
-<div class="represent-box">
-<div class="represent-item">
-<strong>Индивидуальное составление:</strong> Мы напишем документы конкретно под вашу жизненную ситуацию, строго следуя Процессуальному кодексу РК, вместо типовых бланков.
-</div>
-<div class="represent-item">
-<strong>Подача через судебные базы:</strong> Самостоятельно загрузим все материалы в цифровые системы («Судебный кабинет»), проконтролируем регистрацию и отследим ход дела.
-</div>
-<div class="represent-item">
-<strong>Расчет госпошлин:</strong> Безошибочно определим сумму пошлины по Налоговому кодексу РК и предоставим верные реквизиты нужного суда.
-</div>
-</div>
-<div style="text-align: center;">
-<a class="button" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%20%D0%BF%D0%BE%D0%BB%D0%BD%D0%BE%D0%B5%20%D1%8E%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE." target="_blank">Заказать представительство под ключ</a>
-</div>
-</section>
-
-<section class="section">
-<h2>Успешные кейсы нашей работы</h2>
-<div class="case-card">
-<h4>✓ Снижение долга по займу в МФО</h4>
-<div class="case-meta"><strong>Проблема:</strong> Клиент взял микрокредит, из-за просрочки сумма выросла в 3 раза из-за скрытых штрафов.</div>
-<p><strong>Результат:</strong> Провели юридический аудит договора и через суд добились отмены незаконных пени. Клиент выплатил только сумму основного долга.</p>
-</div>
-<div class="case-card">
-<h4>✓ Полное снятие запрета на выезд и ареста карт</h4>
-<div class="case-meta"><strong>Проблема:</strong> ЧСИ наложил арест на все счета и ограничил выезд из РК из-за необоснованного долга.</div>
-<p><strong>Результат:</strong> Оперативно обжаловали действия частного судебного исполнителя. Все аресты сняты, доступ к картам восстановлен за 5 рабочих дней.</p>
-</div>
-</section>
-
-<footer>
-© 2026 Adilet Qorgau — Юридическая защита граждан Казахстана.
-</footer>
-
-<script>
-// ЛОГИКА ДЛЯ ГЛАВНЫХ ПАПОК
-function toggleMainFolder(header) {
-    const container = header.parentElement;
-    const content = container.querySelector('.folder-content');
-    
-    container.classList.toggle('active');
-    
-    if (container.classList.contains('active')) {
-        content.style.maxHeight = content.scrollHeight + "px";
-    } else {
-        // При закрытии главной папки сбрасываем и закрываем все подпапки внутри
-        const openSubs = container.querySelectorAll('.sub-folder.active');
-        openSubs.forEach(sub => {
-            sub.classList.remove('active');
-            sub.querySelector('.sub-content').style.maxHeight = "0px";
-        });
-        content.style.maxHeight = "0px";
-    }
-}
-
-// ЛОГИКА ДЛЯ ВЛОЖЕННЫХ ПОДПАПОК (УРОВЕНЬ 2)
-function toggleSubFolder(event, header) {
-    event.stopPropagation(); // Защита, чтобы клик не закрывал основную папку
-    const subFolder = header.parentElement;
-    const subContent = subFolder.querySelector('.sub-content');
-    const mainContent = subFolder.closest('.folder-content');
-    
-    subFolder.classList.toggle('active');
-    
-    if (subFolder.classList.contains('active')) {
-        subContent.style.maxHeight = subContent.scrollHeight + "px";
-        // Расширяем высоту родительской папки, чтобы внутренний контент не обрезался
-        mainContent.style.maxHeight = (mainContent.scrollHeight + subContent.scrollHeight) + "px";
-    } else {
-        const currentSubHeight = subContent.scrollHeight;
-        subContent.style.maxHeight = "0px";
-        // Уменьшаем высоту родительской папки
-        mainContent.style.maxHeight = (mainContent.scrollHeight - currentSubHeight) + "px";
-    }
-}
-</script>
-
-</body>
-</html>
