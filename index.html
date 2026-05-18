@@ -6,12 +6,12 @@
 <title>Adilet Qorgau</title>
 
 <style>
-
 body{
 margin:0;
-font-family:Arial,sans-serif;
+font-family:Arial, sans-serif;
 background:#0f172a;
 color:white;
+line-height: 1.6;
 }
 
 header{
@@ -22,154 +22,366 @@ background:linear-gradient(135deg,#0f172a,#1e293b);
 
 h1{
 font-size:60px;
-margin-bottom:15px;
+margin-bottom:10px;
+font-weight: bold;
 }
 
-.subtitle{
-font-size:22px;
+h2{
+font-size:32px;
+text-align:center;
+margin-bottom:20px;
+position: relative;
+}
+
+.sub-title {
+text-align: center;
+color: #38bdf8;
+font-size: 24px;
+margin-top: 40px;
+margin-bottom: 20px;
+font-weight: bold;
+border-left: 4px solid #2563eb;
+padding-left: 15px;
+display: inline-block;
+}
+
+.sub-title-container {
+text-align: center;
+}
+
+p{
+font-size:18px;
 color:#cbd5e1;
-max-width:700px;
-margin:auto;
 }
 
 .button{
 display:inline-block;
-margin-top:35px;
-padding:15px 35px;
+margin-top:30px;
+padding:15px 40px;
 background:#2563eb;
 color:white;
 text-decoration:none;
-border-radius:14px;
+border-radius:12px;
 font-size:18px;
-font-weight:bold;
+font-weight: bold;
+transition: background 0.3s, transform 0.2s;
+}
+
+.button:hover {
+background:#1d4ed8;
+transform: translateY(-2px);
 }
 
 .section{
-padding:70px 20px;
-max-width:1100px;
+padding:80px 20px;
+max-width:1000px;
 margin:auto;
+border-bottom: 1px solid #334155;
 }
 
-.section h2{
-font-size:38px;
-margin-bottom:40px;
-text-align:center;
+.about-text {
+font-size: 19px;
+max-width: 800px;
+margin: 0 auto;
+text-align: center;
+color: #e2e8f0;
 }
 
 .cards{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
+margin-top:20px;
 }
 
 .card{
 background:#1e293b;
-padding:30px;
-border-radius:22px;
-transition:0.3s;
+padding:35px;
+border-radius:20px;
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.card:hover{
-transform:translateY(-5px);
+.card h3 {
+margin-top: 0;
+color: #38bdf8;
+font-size: 22px;
 }
 
-.card h3{
-margin-top:0;
-font-size:24px;
+/* Стили для магазина шаблонов */
+.shop-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+margin-top: 10px;
+margin-bottom: 40px;
 }
 
-.card p{
-color:#cbd5e1;
-line-height:1.6;
+.shop-card {
+background: #1e293b;
+border: 1px solid #334155;
+padding: 25px;
+border-radius: 16px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+transition: transform 0.2s, border-color 0.2s;
 }
 
-.about{
-background:#111827;
-border-radius:25px;
-padding:40px;
-line-height:1.8;
-font-size:18px;
-color:#d1d5db;
+.shop-card:hover {
+transform: translateY(-2px);
+border-color: #2563eb;
+}
+
+.shop-card h3 {
+margin-top: 0;
+font-size: 18px;
+color: #f1f5f9;
+min-height: 54px;
+line-height: 1.4;
+}
+
+.shop-card .price {
+font-size: 22px;
+font-weight: bold;
+color: #10b981;
+margin: 15px 0;
+}
+
+.btn-sm {
+display: block;
+text-align: center;
+padding: 12px 20px;
+background: #2563eb;
+color: white;
+text-decoration: none;
+border-radius: 8px;
+font-weight: bold;
+font-size: 15px;
+transition: background 0.3s;
+}
+
+.btn-sm:hover {
+background: #1d4ed8;
+}
+
+.represent-box {
+background: linear-gradient(135deg, #1e293b, #0f172a);
+padding: 40px;
+border-radius: 25px;
+border: 1px solid #3b82f6;
+margin-top: 20px;
+}
+
+.represent-item {
+margin-bottom: 20px;
+padding-left: 30px;
+position: relative;
+font-size: 18px;
+}
+
+.represent-item::before {
+content: "⚡";
+position: absolute;
+left: 0;
+top: 0;
+color: #3b82f6;
+}
+
+.case-card {
+background: #1e293b;
+padding: 30px;
+border-radius: 20px;
+border-left: 5px solid #10b981;
+margin-bottom: 25px;
+}
+
+.case-card h4 {
+margin: 0 0 10px 0;
+font-size: 20px;
+color: #10b981;
+}
+
+.case-meta {
+font-size: 15px;
+color: #94a3b8;
+margin-bottom: 10px;
+}
+
+.case-meta strong {
+color: #f1f5f9;
 }
 
 footer{
-padding:40px;
 text-align:center;
+padding:50px;
 color:#94a3b8;
+background: #0b0f19;
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <h1>Adilet Qorgau</h1>
-
-<p class="subtitle">
-Юридическая помощь, защита прав граждан,
-работа с банками, МФО, судами и ЧСИ
-</p>
-
-<a class="button" href="https://wa.me/77789980315">
-WhatsApp консультация
+<p>Юридическая помощь и защита прав граждан Казахстана</p>
+<a class="button" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%B0%20%D1%8E%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%8C%D1%82%D0%B0%D1%86%D0%B8%D1%8F." target="_blank">
+Получить консультацию
 </a>
-
 </header>
 
 <section class="section">
+<h2>О компании «Adilet Qorgau»</h2>
+<div class="about-text">
+<p>Мы — команда квалифицированных юристов, специализирующаяся на защите прав граждан Казахстана перед банками, микрофинансовыми организациями (МФО) и судебными исполнителями. Наша цель — вернуть вам спокойствие, защитить от давления коллекторов и законным путем решить проблемы с долгами и арестами. Мы беремся за дела любой сложности и работаем на результат.</p>
+</div>
+</section>
 
+<section class="section">
 <h2>Наши услуги</h2>
-
 <div class="cards">
-
 <div class="card">
 <h3>МФО и банки</h3>
-<p>
-Помощь по займам, коллекторам, судебным приказам и долгам
-</p>
+<p>Помощь по займам, снижению процентов, защите от коллекторов и ведению судебных дел.</p>
 </div>
-
 <div class="card">
 <h3>Снятие запрета</h3>
-<p>
-Помощь по ограничениям на выезд, арестам и ЧСИ
-</p>
+<p>Защита прав при ограничениях на выезд из Казахстана, арестах банковских карт и счетов ЧСИ.</p>
 </div>
-
 <div class="card">
-<h3>Судебные документы</h3>
-<p>
-Подготовка исков, жалоб, ходатайств и обращений
-</p>
+<h3>Семейные споры</h3>
+<p>Полное ведение дел по расторжению брака, разделу имущества, взысканию алиментов без вашего присутствия.</p>
 </div>
-
 <div class="card">
-<h3>Представительство</h3>
-<p>
-Помощь в гражданских делах и сопровождение клиентов
-</p>
+<h3>Договоры и долги</h3>
+<p>Взыскание долгов по распискам, урегулирование споров по договорам аренды, купли-продажи и займа.</p>
+</div>
+<div class="card">
+<h3>Защита прав</h3>
+<p>Судебные споры с застройщиками, магазинами, автосалонами, а также взыскание ущерба при заливах жилья.</p>
+</div>
+<div class="card">
+<h3>Суды и жалобы</h3>
+<p>Профессиональная подготовка исков, апелляций, официальных жалоб и юридических документов.</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Магазин заявлений и бланков</h2>
+<p style="text-align: center; color: #94a3b8; margin-bottom: 10px;">Выберите необходимый проверенный шаблон для самостоятельного заполнения:</p>
+
+<div class="sub-title-container">
+<div class="sub-title">Раздел 1: Семья и дети</div>
 </div>
 
+<div class="shop-grid">
+<div class="shop-card">
+<h3>Исковое заявление о расторжении брака</h3>
+<div class="price">2 000 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D1%80%D0%B0%D1%81%D1%82%D0%BE%D1%80%D0%B6%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%B1%D1%80%D0%B0%D0%BA%D0%B0." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Исковое заявление о взыскании алиментов на ребенка</h3>
+<div class="price">2 000 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BD%D0%B0%20%D1%80%D0%B5%D0%B1%D0%B5%D0%BD%D0%BA%D0%B0." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Заявление о взыскании алиментов на содержание супруги</h3>
+<div class="price">2 000 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%B2%D0%B7%D1%8B%D1%81%D0%BA%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B0%D0%BB%D0%B8%D0%BC%D0%B5%D0%BD%D1%82%D0%BE%D0%B2%20%D0%BD%D0%B0%20%D1%81%D0%BE%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%81%D1%83%D0%BF%D1%80%D1%83%D0%B3%D0%B8." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Исковое заявление о разделе общего имущества супругов</h3>
+<div class="price">2 500 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%20%D0%BE%D0%B1%D1%89%D0%B5%D0%B3%D0%BE%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Иск об определении места жительства ребенка</h3>
+<div class="price">2 500 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BE%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D0%BC%D0%B5%D1%81%D1%82%D0%B0%20%D0%B6%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%B0%20%D1%80%D0%B5%D0%B1%D0%B5%D0%BD%D0%BA%D0%B0." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Исковое заявление о лишении родительских прав</h3>
+<div class="price">2 500 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BB%D0%B8%D1%88%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%80%D0%BE%D0%B4%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%BA%D0%B8%D1%85%20%D0%BF%D1%80%D0%B0%D0%B2." target="_blank">Купить шаблон</a>
+</div>
+</div>
+
+<div class="sub-title-container">
+<div class="sub-title">Раздел 2: Наследственные дела</div>
+</div>
+
+<div class="shop-grid">
+<div class="shop-card">
+<h3>Исковое заявление о разделе наследственного имущества</h3>
+<div class="price">2 500 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%20%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE%20%D0%B8%D0%BC%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%B0." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Иск о признании завещания недействительным</h3>
+<div class="price">2 500 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%BF%D1%80%D0%B8%D0%B7%D0%BD%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%B2%D0%B5%D1%89%D0%B0%D0%BD%D0%B8%D1%8F%20%D0%BD%D0%B5%D0%B4%D0%B5%D0%B9%D1%81%D1%82%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Заявление об установлении факта принятия наследства</h3>
+<div class="price">2 000 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%84%D0%B0%D0%BA%D1%82%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D0%B8%D1%8F%20%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0." target="_blank">Купить шаблон</a>
+</div>
+
+<div class="shop-card">
+<h3>Исковое заявление о восстановлении срока для принятия наследства</h3>
+<div class="price">2 500 ₸</div>
+<a class="btn-sm" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20Adilet%20Qorgau.%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%B8%D0%BE%D0%B1%D1%80%D0%B5%D1%81%D1%82%D0%B8%20%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%20%D0%B8%D1%81%D0%BA%D0%BE%D0%B2%D0%BE%D0%B3%D0%BE%20%D0%B7%D0%B0%D1%8F%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%BE%20%D0%B2%D0%BE%D1%81%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8%20%D1%81%D1%80%D0%BE%D0%BA%D0%B0%20%D0%BF%D1%80%D0%B8%D0%BD%D1%8F%D1%82%D0%B8%D1%8F%20%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D1%81%D1%82%D0%B2%D0%B0." target="_blank">Купить шаблон</a>
+</div>
 </div>
 
 </section>
 
 <section class="section">
-
-<h2>О нас</h2>
-
-<div class="about">
-Adilet Qorgau — платформа юридической помощи и защиты прав граждан Казахстана.
-Мы помогаем по вопросам банков, МФО, ЧСИ, судебных споров,
-ограничений на выезд, жалоб и подготовки документов.
+<h2>Полное юридическое сопровождение (Представительство)</h2>
+<p style="text-align: center; font-size: 19px; max-width: 800px; margin: 0 auto 30px auto;">
+<strong>Боитесь допустить ошибку при самостоятельном заполнении?</strong> Мы готовы полностью взять ваше дело на себя, выступить вашими официальными представителями на судебных и государственных порталах Казахстана и провести процедуру под ключ.
+</p>
+<div class="represent-box">
+<div class="represent-item">
+<strong>Индивидуальное составление:</strong> Мы напишем документы конкретно под вашу жизненную ситуацию, строго следуя Процессуальному кодексу РК, вместо типовых бланков.
 </div>
+<div class="represent-item">
+<strong>Подача через судебные базы:</strong> Самостоятельно загрузим все материалы в цифровые системы («Судебный кабинет»), проконтролируем регистрацию и отследим ход дела.
+</div>
+<div class="represent-item">
+<strong>Расчет госпошлин:</strong> Безошибочно определим сумму пошлины по Налоговому кодексу РК и предоставим верные реквизиты нужного суда.
+</div>
+</div>
+<div style="text-align: center;">
+<a class="button" href="https://wa.me/77789980315?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BD%D0%B5%20%D0%BD%D1%83%D0%B6%D0%BD%D0%BE%20%D0%BF%D0%BE%D0%BB%D0%BD%D0%BE%D0%B5%20%D1%8E%D1%80%D0%B8%D0%B4%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5%20%D1%81%D0%BE%D0%BF%D1%80%D0%BE%D0%B2%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%B8%20%D0%BF%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%B8%D1%82%D0%B5%D0%BB%D1%8C%D1%81%D1%82%D0%B2%D0%BE." target="_blank">Заказать представительство под ключ</a>
+</div>
+</section>
 
+<section class="section">
+<h2>Успешные кейсы нашей работы</h2>
+<div class="case-card">
+<h4>✓ Снижение долга по займу в МФО</h4>
+<div class="case-meta"><strong>Проблема:</strong> Клиент взял микрокредит, из-за просрочки сумма выросла в 3 раза из-за скрытых штрафов.</div>
+<p><strong>Результат:</strong> Провели юридический аудит договора и через суд добились отмены незаконных пени. Клиент выплатил только сумму основного долга.</p>
+</div>
+<div class="case-card">
+<h4>✓ Полное снятие запрета на выезд и ареста карт</h4>
+<div class="case-meta"><strong>Проблема:</strong> ЧСИ наложил арест на все счета и ограничил выезд из РК из-за необоснованного долга.</div>
+<p><strong>Результат:</strong> Оперативно обжаловали действия частного судебного исполнителя. Все аресты сняты, доступ к картам восстановлен за 5 рабочих дней.</p>
+</div>
 </section>
 
 <footer>
-© 2026 Adilet Qorgau
+© 2026 Adilet Qorgau — Юридическая защита граждан Казахстана.
 </footer>
 
 </body>
