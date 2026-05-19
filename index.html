@@ -669,6 +669,15 @@ row.style.display = "flex";
 
 if(folderContent){
 folderContent.style.display = "block";
+
+let folder = row.closest(".folder-container");
+
+if(folder){
+folder.scrollIntoView({
+behavior: "smooth",
+block: "start"
+});
+}
 }
 
 if(subContent){
