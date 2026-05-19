@@ -631,62 +631,51 @@ WhatsApp
 
 <script>
 
+<script>
 function toggleMainFolder(element){
-
 const content = element.nextElementSibling;
 
-content.style.display =
-content.style.display === "block"
-? "none"
-: "block";
-
+if(content.style.display === "block"){
+content.style.display = "none";
+}else{
+content.style.display = "block";
+}
 }
 
-function toggleSubFolder(event,element){
-
+function toggleSubFolder(event, element){
 event.stopPropagation();
 
 const content = element.nextElementSibling;
 
-content.style.display =
-content.style.display === "block"
-? "none"
-: "block";
-
+if(content.style.display === "block"){
+content.style.display = "none";
+}else{
+content.style.display = "block";
 }
-let input = document.getElementById("searchInput").value.toLowerCase();
-let rows = document.querySelectorAll(".shop-row");
+}
+
+function searchTemplates(){
+const input = document.getElementById("searchInput").value.toLowerCase();
+const rows = document.querySelectorAll(".shop-row");
 
 rows.forEach(function(row){
-let text = row.innerText.toLowerCase();
-let folderContent = row.closest(".folder-content");
+const text = row.innerText.toLowerCase();
+const folderContent = row.closest(".folder-content");
+const subContent = row.closest(".sub-content");
 
-if(text.includes(input)){
+if(input === ""){
+row.style.display = "flex";
+}else if(text.includes(input)){
 row.style.display = "flex";
 
-if(input.length > 0 && folderContent){
+if(folderContent){
 folderContent.style.display = "block";
 }
 
-}else{
-row.style.display = "none";
+if(subContent){
+subContent.style.display = "block";
 }
-});
 
-if(input.length === 0){
-rows.forEach(function(row){
-row.style.display = "flex";
-});
-}
-}
-let input = document.getElementById("searchInput").value.toLowerCase();
-let rows = document.querySelectorAll(".shop-row");
-
-rows.forEach(function(row){
-let text = row.innerText.toLowerCase();
-
-if(text.includes(input)){
-row.style.display = "flex";
 }else{
 row.style.display = "none";
 }
