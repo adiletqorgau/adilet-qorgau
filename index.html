@@ -18,7 +18,28 @@ background:#0f172a;
 font-family:Arial,sans-serif;
 color:white;
 }
+.navbar{
+position:sticky;
+top:0;
+z-index:1000;
+background:#0f172a;
+border-bottom:1px solid #334155;
+padding:15px 20px;
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+}
 
+.navbar a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.navbar a:hover{
+color:#60a5fa;
+}
 header{
 padding:80px 20px;
 text-align:center;
@@ -236,7 +257,13 @@ display:block;
 </head>
 
 <body>
-
+<nav class="navbar">
+<a href="#">Главная</a>
+<a href="#templates">Шаблоны</a>
+<a href="#services">Услуги</a>
+<a href="https://wa.me/77789980315" target="_blank">Консультация</a>
+<a href="#contacts">Контакты</a>
+</nav>
 <header>
 
 <h1>Adilet Qorgau</h1>
@@ -263,7 +290,7 @@ Telegram
 
 </header>
 
-<section class="section">
+<section class="section" id="templates">
 <div style="
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -755,8 +782,10 @@ target="_blank">
 WhatsApp
 </a>
 
-<footer>
-© 2026 Adilet Qorgau
+<footer id="contacts">
+<p>Контакты: +7 747 75 10 343</p>
+<p>WhatsApp / Telegram</p>
+<p>© 2026 Adilet Qorgau</p>
 </footer>
 
 
