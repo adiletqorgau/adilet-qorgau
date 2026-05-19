@@ -63,9 +63,14 @@ transform:translateY(-2px);
 box-shadow:0 10px 20px rgba(37,99,235,0.35);
 }
 header{
-padding:80px 20px;
+padding:110px 20px;
 text-align:center;
-background:linear-gradient(135deg,#111827,#1e293b);
+background:
+radial-gradient(circle at top right, rgba(59,130,246,0.18), transparent 25%),
+radial-gradient(circle at bottom left, rgba(37,99,235,0.14), transparent 30%),
+linear-gradient(135deg,#111827,#0f172a);
+position:relative;
+overflow:hidden;
 }
 
 h1{
@@ -145,9 +150,11 @@ padding:20px;
 
 .sub-folder{
 margin-bottom:18px;
-border-radius:14px;
+border-radius:18px;
 overflow:hidden;
-background:#111827;
+background:rgba(17,24,39,0.7);
+border:1px solid rgba(255,255,255,0.04);
+backdrop-filter:blur(10px);
 }
 
 .sub-header{
@@ -260,54 +267,15 @@ justify-content:space-between;
 
 }
 .folder-container{
-width:100%;
-clear:both;
+background:rgba(30,41,59,0.75);
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.06);
+border-radius:22px;
+margin-bottom:20px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,0.22);
 }
-
-.folder-content{
-width:100%;
-}
-
-.shop-row{
-width:100%;
-}
-
-.section{
-display:block;
-}
-</style>
-</head>
-
-<body>
-<nav class="navbar">
-<a href="#">Главная</a>
-<a href="#templates">Шаблоны</a>
-<a href="#services">Услуги</a>
-<a href="https://wa.me/77789980315" target="_blank">Консультация</a>
-<a href="#contacts">Контакты</a>
-</nav>
-<header>
-
-<h1>
-Защита от МФО, коллекторов и незаконных взысканий
-</h1>
-
-<p class="subtitle">
-Помогаем отменять судебные решения,
-аресты счетов, исполнительные надписи,
-запреты на выезд и защищать права граждан Казахстана
-</p>
-
-<div style="
-margin-top:25px;
-display:flex;
-justify-content:center;
-gap:12px;
-flex-wrap:wrap;
-">
-
-<div style="
-background:#1e293b;
 padding:10px 18px;
 border-radius:999px;
 border:1px solid #334155;
