@@ -266,7 +266,20 @@ Telegram
 <h2 class="section-title">
 Каталог шаблонов
 </h2>
-
+<input
+type="text"
+id="searchInput"
+placeholder="Поиск шаблона..."
+onkeyup="searchTemplates()"
+style="
+width:100%;
+padding:16px;
+margin-bottom:30px;
+border-radius:14px;
+border:none;
+font-size:18px;
+outline:none;
+">
 <!-- НАСЛЕДСТВО -->
 
 <div class="folder-container">
@@ -641,7 +654,20 @@ content.style.display === "block"
 : "block";
 
 }
+function searchTemplates(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let rows = document.querySelectorAll(".shop-row");
 
+rows.forEach(function(row){
+let text = row.innerText.toLowerCase();
+
+if(text.includes(input)){
+row.style.display = "flex";
+}else{
+row.style.display = "none";
+}
+});
+}
 </script>
 
 </body>
