@@ -858,6 +858,7 @@ margin:auto;
 ">
 
 <input
+id="clientName"
 type="text"
 placeholder="Ваше имя"
 style="
@@ -869,6 +870,7 @@ font-size:16px;
 >
 
 <input
+id="clientPhone"
 type="tel"
 placeholder="Ваш номер телефона"
 style="
@@ -880,6 +882,7 @@ font-size:16px;
 >
 
 <textarea
+id="clientProblem"
 placeholder="Опишите проблему"
 rows="5"
 style="
@@ -893,6 +896,7 @@ resize:none;
 
 <button
 type="button"
+onclick="sendApplication()"
 style="
 padding:18px;
 background:#2563eb;
@@ -997,6 +1001,19 @@ subContent.style.display = "block";
 row.style.display = "none";
 }
 });
+}
+function sendApplication(){
+const name = document.getElementById("clientName").value;
+const phone = document.getElementById("clientPhone").value;
+const problem = document.getElementById("clientProblem").value;
+
+const message =
+"Здравствуйте! Хочу оставить заявку.%0A%0A" +
+"Имя: " + name + "%0A" +
+"Телефон: " + phone + "%0A" +
+"Проблема: " + problem;
+
+window.open("https://wa.me/77789980315?text=" + message, "_blank");
 }
 </script>
 
