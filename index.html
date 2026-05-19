@@ -654,7 +654,31 @@ content.style.display === "block"
 : "block";
 
 }
-function searchTemplates(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let rows = document.querySelectorAll(".shop-row");
+
+rows.forEach(function(row){
+let text = row.innerText.toLowerCase();
+let folderContent = row.closest(".folder-content");
+
+if(text.includes(input)){
+row.style.display = "flex";
+
+if(input.length > 0 && folderContent){
+folderContent.style.display = "block";
+}
+
+}else{
+row.style.display = "none";
+}
+});
+
+if(input.length === 0){
+rows.forEach(function(row){
+row.style.display = "flex";
+});
+}
+}
 let input = document.getElementById("searchInput").value.toLowerCase();
 let rows = document.querySelectorAll(".shop-row");
 
