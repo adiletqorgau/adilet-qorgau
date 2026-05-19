@@ -6,35 +6,197 @@
 <title>Adilet Qorgau</title>
 
 <style>
-body{
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 background:#0f172a;
-font-family:Arial;
+font-family:Arial,sans-serif;
 color:white;
 }
 
 header{
+padding:80px 20px;
 text-align:center;
-padding:100px 20px;
+background:linear-gradient(135deg,#111827,#1e293b);
 }
 
 h1{
-font-size:60px;
+font-size:58px;
+margin-bottom:15px;
 }
 
-p{
+.subtitle{
 font-size:22px;
 color:#cbd5e1;
+max-width:800px;
+margin:auto;
+line-height:1.6;
+}
+
+.top-buttons{
+margin-top:35px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
 }
 
 .button{
-display:inline-block;
-margin-top:30px;
 padding:15px 30px;
 background:#2563eb;
-border-radius:12px;
 color:white;
 text-decoration:none;
+border-radius:14px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.button:hover{
+background:#1d4ed8;
+}
+
+.section{
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
+}
+
+.section-title{
+font-size:38px;
+margin-bottom:35px;
+text-align:center;
+}
+
+.folder-container{
+background:#1e293b;
+border-radius:18px;
+margin-bottom:20px;
+overflow:hidden;
+}
+
+.folder-header{
+padding:22px;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:24px;
+font-weight:bold;
+background:#172033;
+transition:0.3s;
+}
+
+.folder-header:hover{
+background:#1f2b45;
+}
+
+.folder-content{
+display:none;
+padding:20px;
+}
+
+.sub-folder{
+margin-bottom:18px;
+border-radius:14px;
+overflow:hidden;
+background:#111827;
+}
+
+.sub-header{
+padding:18px;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:19px;
+font-weight:bold;
+background:#182235;
+}
+
+.sub-content{
+display:none;
+padding:10px 15px 20px;
+}
+
+.shop-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+padding:16px;
+border-bottom:1px solid #334155;
+}
+
+.doc-name{
+flex:1;
+line-height:1.5;
+}
+
+.doc-actions{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.doc-price{
+color:#60a5fa;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.btn-buy{
+background:#2563eb;
+padding:10px 18px;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+white-space:nowrap;
+}
+
+.btn-buy:hover{
+background:#1d4ed8;
+}
+
+footer{
+text-align:center;
+padding:50px 20px;
+color:#94a3b8;
+}
+
+@media(max-width:768px){
+
+h1{
+font-size:42px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.folder-header{
+font-size:20px;
+}
+
+.sub-header{
+font-size:17px;
+}
+
+.shop-row{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.doc-actions{
+width:100%;
+justify-content:space-between;
+}
+
 }
 
 </style>
@@ -46,16 +208,227 @@ text-decoration:none;
 
 <h1>Adilet Qorgau</h1>
 
-<p>
-Юридическая помощь и документы
+<p class="subtitle">
+Юридическая помощь, шаблоны документов,
+судебные заявления, жалобы, банкротство,
+МФО, банки, ЧСИ и защита прав граждан Казахстана
 </p>
 
-<a class="button" href="https://wa.me/77789980315">
+<div class="top-buttons">
+
+<a class="button" href="https://wa.me/77789980315" target="_blank">
 WhatsApp
 </a>
 
+<a class="button" href="#">
+Telegram
+</a>
+
+</div>
+
 </header>
 
+<section class="section">
+
+<h2 class="section-title">
+Каталог шаблонов
+</h2>
+
+<!-- НАСЛЕДСТВО -->
+
+<div class="folder-container">
+
+<div class="folder-header" onclick="toggleMainFolder(this)">
+<div>📁 Наследственные дела</div>
+<div>▶</div>
+</div>
+
+<div class="folder-content">
+
+<div class="sub-folder">
+
+<div class="sub-header" onclick="toggleSubFolder(event,this)">
+<div>📁 Принятие наследства / срок</div>
+<div>▶</div>
+</div>
+
+<div class="sub-content">
+
+<div class="shop-row">
+<div class="doc-name">
+Об установлении факта принятия наследства и места открытия наследства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">2 500 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+О восстановлении срока для принятия наследства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">2 500 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+Заявление о принятии наследства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">2 000 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+Об установлении факта родственных отношений для наследства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">2 500 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="sub-folder">
+
+<div class="sub-header" onclick="toggleSubFolder(event,this)">
+<div>📁 Разделение / оспаривание наследства</div>
+<div>▶</div>
+</div>
+
+<div class="sub-content">
+
+<div class="shop-row">
+<div class="doc-name">
+О признании недостойным наследником
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">3 000 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+О признании завещания недействительным
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">3 500 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+О разделе наследства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">3 000 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+<!-- БАНКРОТСТВО -->
+
+<div class="folder-container">
+
+<div class="folder-header" onclick="toggleMainFolder(this)">
+<div>📁 Банкротство физических лиц</div>
+<div>▶</div>
+</div>
+
+<div class="folder-content">
+
+<div class="shop-row">
+<div class="doc-name">
+Заявление о применении процедуры внесудебного банкротства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">5 000 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+Заявление о восстановлении платежеспособности
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">4 000 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+<div class="shop-row">
+<div class="doc-name">
+Жалоба на отказ в применении процедуры банкротства
+</div>
+
+<div class="doc-actions">
+<div class="doc-price">3 500 ₸</div>
+<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
+</div>
+</div>
+
+</div>
+</div>
+
+</section>
+
+<footer>
+© 2026 Adilet Qorgau
+</footer>
+
+<script>
+
+function toggleMainFolder(element){
+
+const content = element.nextElementSibling;
+
+content.style.display =
+content.style.display === "block"
+? "none"
+: "block";
+
+}
+
+function toggleSubFolder(event,element){
+
+event.stopPropagation();
+
+const content = element.nextElementSibling;
+
+content.style.display =
+content.style.display === "block"
+? "none"
+: "block";
+
+}
+
+</script>
+
 </body>
-</html>
 </html>
