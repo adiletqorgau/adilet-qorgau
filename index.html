@@ -316,11 +316,29 @@ box-shadow:0 10px 25px rgba(0,0,0,0.15);
 transform:translateY(-4px);
 box-shadow:0 20px 45px rgba(0,0,0,0.25);
 }
+.fade-in{
+opacity:0;
+transform:translateY(25px);
+animation:fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.folder-container,
+.card,
+.section > div{
+animation:fadeInUp 0.8s ease forwards;
+}
 </style>
 </head>
 <body>
 
-<header>
+<header class="fade-in">
 
 <h1>
 Защита от МФО, коллекторов и незаконных взысканий
