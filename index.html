@@ -90,6 +90,8 @@ background:
 radial-gradient(circle at top right, rgba(59,130,246,0.18), transparent 25%),
 radial-gradient(circle at bottom left, rgba(37,99,235,0.14), transparent 30%),
 linear-gradient(135deg,#111827,#0f172a);
+animation:headerGlow 8s ease infinite alternate;
+background-size:200% 200%;
 position:relative;
 overflow:hidden;
 }
@@ -333,6 +335,17 @@ transform:translateY(0);
 .card,
 .section > div{
 animation:fadeInUp 0.8s ease forwards;
+}
+@keyframes headerGlow{
+
+0%{
+background-position:left top;
+}
+
+100%{
+background-position:right bottom;
+}
+
 }
 </style>
 </head>
