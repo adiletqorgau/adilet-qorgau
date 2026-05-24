@@ -1,114 +1,74 @@
 const phone = "77789980315";
 
 const documents = [
-  {
-    title: "Возражение на иск МФО или банка о взыскании задолженности",
-    category: "МФО, банки, коллекторы",
-    price: "3 000 ₸",
-    tags: ["мфо", "банк", "коллекторы", "долг", "иск"]
-  },
-  {
-    title: "Заявление о применении срока исковой давности",
-    category: "МФО, банки, коллекторы",
-    price: "2 500 ₸",
-    tags: ["срок", "исковая давность", "долг", "мфо"]
-  },
-  {
-    title: "Заявление об отмене заочного или упрощенного решения суда",
-    category: "МФО, банки, коллекторы",
-    price: "3 000 ₸",
-    tags: ["заочное решение", "упрощенное решение", "суд"]
-  },
-  {
-    title: "Заявление ЧСИ о снятии ареста с банковских счетов",
-    category: "ЧСИ и исполнительное производство",
-    price: "2 000 ₸",
-    tags: ["чси", "арест", "счет", "исполнительное производство"]
-  },
-  {
-    title: "Заявление ЧСИ о снятии запрета на выезд",
-    category: "ЧСИ и исполнительное производство",
-    price: "2 500 ₸",
-    tags: ["чси", "запрет", "выезд", "граница"]
-  },
-  {
-    title: "Жалоба на действия или бездействие частного судебного исполнителя",
-    category: "ЧСИ и исполнительное производство",
-    price: "3 000 ₸",
-    tags: ["чси", "жалоба", "бездействие"]
-  },
-  {
-    title: "Исковое заявление о расторжении брака",
-    category: "Семейные споры",
-    price: "2 000 ₸",
-    tags: ["развод", "брак", "семья"]
-  },
-  {
-    title: "Иск о взыскании алиментов на ребенка",
-    category: "Семейные споры",
-    price: "2 500 ₸",
-    tags: ["алименты", "ребенок", "семья"]
-  },
-  {
-    title: "Иск о разделе совместно нажитого имущества супругов",
-    category: "Семейные споры",
-    price: "3 000 ₸",
-    tags: ["раздел имущества", "супруги", "семья"]
-  },
-  {
-    title: "Иск об определении места жительства ребенка",
-    category: "Семейные споры",
-    price: "3 000 ₸",
-    tags: ["ребенок", "место жительства", "семья"]
-  },
-  {
-    title: "Иск об установлении порядка общения с ребенком",
-    category: "Семейные споры",
-    price: "3 000 ₸",
-    tags: ["ребенок", "общение", "семья"]
-  },
-  {
-    title: "Документы по банкротству физических лиц",
-    category: "Банкротство физических лиц",
-    price: "по запросу",
-    tags: ["банкротство", "физические лица", "долг"]
-  },
-  {
-    title: "Документы по наследственным делам",
-    category: "Наследственные дела",
-    price: "по запросу",
-    tags: ["наследство", "нотариус", "имущество"]
-  },
-  {
-    title: "Документы по ДТП, ущербу и моральному вреду",
-    category: "ДТП, ущерб, моральный вред",
-    price: "по запросу",
-    tags: ["дтп", "ущерб", "моральный вред"]
-  },
-  {
-    title: "Документы по трудовым спорам",
-    category: "Трудовые споры",
-    price: "по запросу",
-    tags: ["работа", "труд", "увольнение", "зарплата"]
-  },
-  {
-    title: "Административная жалоба",
-    category: "Административные жалобы",
-    price: "по запросу",
-    tags: ["административная жалоба", "госорган", "обращение"]
-  },
-  {
-    title: "Апелляционная или кассационная жалоба",
-    category: "Апелляции и кассации",
-    price: "по запросу",
-    tags: ["апелляция", "кассация", "жалоба", "суд"]
-  },
-  {
-    title: "Заявление по исполнительной надписи нотариуса",
-    category: "Нотариус и исполнительные надписи",
-    price: "по запросу",
-    tags: ["нотариус", "исполнительная надпись", "отмена"]
-  }
+  { title: "Срок исковой давности", category: "МФО, банки, коллекторы", url: "documents/mfo/srok-iskovoy-davnosti.html", tags: ["мфо", "банк", "долг", "срок", "исковая давность"] },
+  { title: "Отмена исполнительной надписи", category: "МФО, банки, коллекторы", url: "documents/mfo/otmena-ispolnitelnoy-nadpisi.html", tags: ["мфо", "нотариус", "исполнительная надпись"] },
+  { title: "Отмена заочного решения суда", category: "МФО, банки, коллекторы", url: "documents/mfo/otmena-zaochnogo-resheniya.html", tags: ["суд", "заочное решение", "мфо"] },
+  { title: "Снижение неустойки", category: "МФО, банки, коллекторы", url: "documents/mfo/snizhenie-neustoyki.html", tags: ["неустойка", "пеня", "кредит", "займ"] },
+  { title: "Восстановление срока", category: "МФО, банки, коллекторы", url: "documents/mfo/vosstanovlenie-sroka.html", tags: ["срок", "жалоба", "возражение"] },
+  { title: "Рассрочка исполнения решения суда", category: "МФО, банки, коллекторы", url: "documents/mfo/rassrochka-resheniya-suda.html", tags: ["рассрочка", "отсрочка", "суд"] },
+  { title: "Жалоба на коллекторов", category: "МФО, банки, коллекторы", url: "documents/mfo/zhaloba-na-kollektorov.html", tags: ["коллекторы", "жалоба", "мфо"] },
+
+  { title: "Снятие ареста", category: "ЧСИ и исполнительное производство", url: "documents/chsi/snyatie-aresta.html", tags: ["чси", "арест", "счет"] },
+  { title: "Снятие запрета на выезд", category: "ЧСИ и исполнительное производство", url: "documents/chsi/snyatie-zapreta-na-vyezd.html", tags: ["чси", "выезд", "запрет"] },
+  { title: "Жалоба на ЧСИ", category: "ЧСИ и исполнительное производство", url: "documents/chsi/zhaloba-na-chsi.html", tags: ["чси", "жалоба", "исполнитель"] },
+  { title: "Приостановление исполнительного производства", category: "ЧСИ и исполнительное производство", url: "documents/chsi/priostanovlenie-ispolnitelnogo-proizvodstva.html", tags: ["чси", "приостановление"] },
+  { title: "Прекращение исполнительного производства", category: "ЧСИ и исполнительное производство", url: "documents/chsi/prekrashchenie-ispolnitelnogo-proizvodstva.html", tags: ["чси", "прекращение"] },
+  { title: "Рассрочка или отсрочка исполнения", category: "ЧСИ и исполнительное производство", url: "documents/chsi/rassrochka-otsrochka-ispolneniya.html", tags: ["рассрочка", "отсрочка", "чси"] },
+  { title: "Возврат исполнительного документа", category: "ЧСИ и исполнительное производство", url: "documents/chsi/vozvrat-ispolnitelnogo-dokumenta.html", tags: ["возврат", "исполнительный документ"] },
+  { title: "Обжалование оценки имущества", category: "ЧСИ и исполнительное производство", url: "documents/chsi/obzhalovanie-ocenki-imushestva.html", tags: ["оценка", "имущество", "чси"] },
+  { title: "Банкротство физических лиц при исполнительном производстве", category: "ЧСИ и исполнительное производство", url: "documents/chsi/bankrotstvo-fizicheskih-lic.html", tags: ["банкротство", "чси", "долг"] },
+
+  { title: "Внесудебное банкротство", category: "Банкротство физических лиц", url: "documents/bankrotstvo/vnesudebnoe-bankrotstvo.html", tags: ["банкротство", "внесудебное"] },
+  { title: "Восстановление платежеспособности", category: "Банкротство физических лиц", url: "documents/bankrotstvo/vosstanovlenie-platezhesposobnosti.html", tags: ["банкротство", "платежеспособность"] },
+  { title: "Жалоба на отказ по банкротству", category: "Банкротство физических лиц", url: "documents/bankrotstvo/zhaloba-na-otkaz.html", tags: ["банкротство", "отказ", "жалоба"] },
+
+  { title: "Восстановление срока принятия наследства", category: "Наследственные дела", url: "documents/nasledstvo/vosstanovlenie-sroka-nasledstva.html", tags: ["наследство", "срок"] },
+  { title: "Принятие наследства", category: "Наследственные дела", url: "documents/nasledstvo/prinyatie-nasledstva.html", tags: ["наследство", "принятие"] },
+  { title: "Включение имущества в наследственную массу", category: "Наследственные дела", url: "documents/nasledstvo/vklyuchenie-imushchestva.html", tags: ["наследство", "имущество"] },
+  { title: "Обязательная доля в наследстве", category: "Наследственные дела", url: "documents/nasledstvo/obyazatelnaya-dolya.html", tags: ["наследство", "доля"] },
+  { title: "Оспаривание наследства", category: "Наследственные дела", url: "documents/nasledstvo/osparivanie-nasledstva.html", tags: ["наследство", "оспаривание"] },
+  { title: "Оспаривание свидетельства о наследстве", category: "Наследственные дела", url: "documents/nasledstvo/osparivanie-svidetelstva.html", tags: ["наследство", "свидетельство"] },
+  { title: "Признание права собственности в порядке наследования", category: "Наследственные дела", url: "documents/nasledstvo/pravo-sobstvennosti-nasledstvo.html", tags: ["наследство", "собственность"] },
+
+  { title: "Расторжение брака", category: "Семейные споры", url: "documents/family/rastorzhenie-braka.html", tags: ["развод", "брак"] },
+  { title: "Взыскание алиментов", category: "Семейные споры", url: "documents/family/vzyskanie-alimentov.html", tags: ["алименты", "ребенок"] },
+  { title: "Увеличение размера алиментов", category: "Семейные споры", url: "documents/family/uvelichenie-razmera-alimentov.html", tags: ["алименты", "увеличение"] },
+  { title: "Уменьшение размера алиментов", category: "Семейные споры", url: "documents/family/umenshenie-razmera-alimentov.html", tags: ["алименты", "уменьшение"] },
+  { title: "Раздел имущества", category: "Семейные споры", url: "documents/family/razdel-imushestva.html", tags: ["раздел", "имущество", "супруги"] },
+  { title: "Споры о детях", category: "Семейные споры", url: "documents/family/deti.html", tags: ["дети", "ребенок", "семья"] },
+  { title: "Установление отцовства", category: "Семейные споры", url: "documents/family/ustanovlenie-otcovstva.html", tags: ["отцовство", "семья"] },
+  { title: "Оспаривание отцовства", category: "Семейные споры", url: "documents/family/osparivanie-otcovstva.html", tags: ["отцовство", "оспаривание"] },
+  { title: "Лишение родительских прав", category: "Семейные споры", url: "documents/family/lishenie-roditelskih-prav.html", tags: ["родительские права", "дети"] },
+
+  { title: "Взыскание ущерба после ДТП", category: "ДТП, ущерб, моральный вред", url: "documents/dtp/vzyskanie-ushcherba-posle-dtp.html", tags: ["дтп", "ущерб"] },
+  { title: "Страховые выплаты", category: "ДТП, ущерб, моральный вред", url: "documents/dtp/strahovye-vyplaty.html", tags: ["страховка", "выплаты", "дтп"] },
+  { title: "Претензия виновнику ДТП", category: "ДТП, ущерб, моральный вред", url: "documents/dtp/pretenziya-vinovniku-dtp.html", tags: ["дтп", "претензия"] },
+  { title: "Моральный вред", category: "ДТП, ущерб, моральный вред", url: "documents/dtp/moralniy-vred.html", tags: ["моральный вред", "ущерб"] },
+
+  { title: "Незаконное увольнение", category: "Трудовые споры", url: "documents/trud/nezakonnoe-uvolnenie.html", tags: ["увольнение", "работа"] },
+  { title: "Восстановление на работе", category: "Трудовые споры", url: "documents/trud/vosstanovlenie-na-rabote.html", tags: ["работа", "восстановление"] },
+  { title: "Взыскание заработной платы", category: "Трудовые споры", url: "documents/trud/vzyskanie-zarabotnoy-platy.html", tags: ["зарплата", "работодатель"] },
+  { title: "Компенсации и выплаты", category: "Трудовые споры", url: "documents/trud/kompensacii-i-vyplaty.html", tags: ["компенсация", "выплаты"] },
+  { title: "Жалоба на работодателя в инспекцию труда", category: "Трудовые споры", url: "documents/trud/zhaloba-rabotodatelyu-v-inspekciyu-truda.html", tags: ["жалоба", "работодатель", "инспекция"] },
+
+  { title: "Жалоба в прокуратуру", category: "Административные жалобы", url: "documents/admin/zhaloba-v-prokuraturu.html", tags: ["прокуратура", "жалоба"] },
+  { title: "Жалоба в полицию", category: "Административные жалобы", url: "documents/admin/zhaloba-v-policiyu.html", tags: ["полиция", "жалоба"] },
+  { title: "Жалоба в Антикор", category: "Административные жалобы", url: "documents/admin/zhaloba-v-antikor.html", tags: ["антикор", "жалоба"] },
+  { title: "Жалоба на судью", category: "Административные жалобы", url: "documents/admin/zhaloba-na-sudyu.html", tags: ["судья", "жалоба"] },
+  { title: "Жалоба на госорганы", category: "Административные жалобы", url: "documents/admin/zhaloba-na-gosorgany.html", tags: ["госорган", "жалоба"] },
+
+  { title: "Апелляционная жалоба", category: "Апелляции и кассации", url: "documents/appeal/apellyacionnaya-zhaloba.html", tags: ["апелляция", "жалоба", "суд"] },
+  { title: "Кассационная жалоба", category: "Апелляции и кассации", url: "documents/appeal/kassacionnaya-zhaloba.html", tags: ["кассация", "жалоба", "суд"] },
+  { title: "Частная жалоба", category: "Апелляции и кассации", url: "documents/appeal/chastnaya-zhaloba.html", tags: ["частная жалоба", "суд"] },
+  { title: "Восстановление процессуального срока", category: "Апелляции и кассации", url: "documents/appeal/vosstanovlenie-processualnogo-sroka.html", tags: ["срок", "процессуальный"] },
+  { title: "Возражение на апелляционную жалобу", category: "Апелляции и кассации", url: "documents/appeal/vozrazhenie-na-apellyacionnuyu-zhalobu.html", tags: ["возражение", "апелляция"] },
+
+  { title: "Отмена исполнительной надписи нотариуса", category: "Нотариус и исполнительные надписи", url: "documents/notary/otmena-ispolnitelnoy-nadpisi.html", tags: ["нотариус", "исполнительная надпись", "отмена"] },
+  { title: "Возражение против исполнительной надписи", category: "Нотариус и исполнительные надписи", url: "documents/notary/vozrazhenie-protiv-ispolnitelnoy-nadpisi.html", tags: ["нотариус", "возражение"] },
+  { title: "Снятие ареста после отмены исполнительной надписи", category: "Нотариус и исполнительные надписи", url: "documents/notary/snyatie-aresta-posle-otmeny-in.html", tags: ["арест", "нотариус"] },
+  { title: "Жалоба на нотариуса", category: "Нотариус и исполнительные надписи", url: "documents/notary/zhaloba-na-notariusa.html", tags: ["нотариус", "жалоба"] },
+  { title: "Жалоба в нотариальную палату", category: "Нотариус и исполнительные надписи", url: "documents/notary/zhaloba-v-notarialnuyu-palatu.html", tags: ["нотариальная палата", "жалоба"] }
 ];
 
 const state = {
@@ -171,7 +131,7 @@ function renderDocuments() {
           <span class="category">${item.category}</span>
           <h3>${item.title}</h3>
           <div class="document-meta">
-            <span class="price">${item.price}</span>
+            <a class="buy-link detail-link" href="${item.url}">Подробнее</a>
             <a class="buy-link" href="${orderLink(item.title)}" target="_blank" rel="noopener">Заказать</a>
           </div>
         </article>

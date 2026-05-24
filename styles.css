@@ -509,6 +509,11 @@ h3 {
   white-space: nowrap;
 }
 
+.detail-link {
+  color: var(--navy);
+  background: #eef4ff;
+}
+
 .empty-state {
   margin: 20px 0 0;
   padding: 18px;
