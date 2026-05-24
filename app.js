@@ -123,18 +123,41 @@ function renderFilters() {
 
 function renderDocuments() {
   const items = filteredDocuments();
+  const grouped = categories
+    .filter((category) => category !== "Все")
+    .map((category) => ({
+      category,
+      items: items.filter((item) => item.category === category)
+    }))
+    .filter((group) => group.items.length > 0);
 
-  documentGrid.innerHTML = items
-    .map((item) => {
+  documentGrid.innerHTML = grouped
+    .map((group, index) => {
+      const open = state.query || index === 0 ? "open" : "";
+      const rows = group.items
+        .map((item) => {
+          return `
+            <li class="document-row">
+              <a class="document-title" href="${item.url}">${item.title}</a>
+              <div class="document-actions">
+                <a class="text-link" href="${item.url}">Подробнее</a>
+                <a class="buy-link" href="${orderLink(item.title)}" target="_blank" rel="noopener">Купить</a>
+              </div>
+            </li>
+          `;
+        })
+        .join("");
+
       return `
-        <article class="document-card">
-          <span class="category">${item.category}</span>
-          <h3>${item.title}</h3>
-          <div class="document-meta">
-            <a class="buy-link detail-link" href="${item.url}">Подробнее</a>
-            <a class="buy-link" href="${orderLink(item.title)}" target="_blank" rel="noopener">Заказать</a>
-          </div>
-        </article>
+        <details class="catalog-folder" ${open}>
+          <summary>
+            <span class="folder-title">${group.category}</span>
+            <span class="folder-count">${group.items.length}</span>
+          </summary>
+          <ul class="folder-documents">
+            ${rows}
+          </ul>
+        </details>
       `;
     })
     .join("");
