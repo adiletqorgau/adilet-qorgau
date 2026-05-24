@@ -1,1464 +1,278 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adilet Qorgau</title>
-<meta name="description"
-content="Юридические услуги и шаблоны документов в Казахстане. МФО, банки, ЧСИ, банкротство физических лиц, наследство, апелляции, жалобы, алименты, исполнительные надписи.">
-
-<meta name="keywords"
-content="
-юрист Казахстан,
-шаблоны заявлений,
-отмена исполнительной надписи,
-жалоба на ЧСИ,
-банкротство физических лиц Казахстан,
-снятие запрета на выезд,
-апелляционная жалоба,
-МФО Казахстан,
-срок исковой давности,
-алименты,
-наследство,
-жалоба в прокуратуру,
-отмена заочного решения,
-судебные документы Казахстан
-">
-
-<meta name="robots" content="index, follow">
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-background:#0f172a;
-font-family:Arial,sans-serif;
-color:white;
-}
-.navbar{
-position:sticky;
-top:0;
-z-index:1000;
-background:#0f172a;
-border-bottom:1px solid #334155;
-padding:15px 20px;
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-}
-
-.navbar a{
-color:white;
-text-decoration:none;
-font-weight:bold;
-}
-
-.navbar a:hover{
-color:#60a5fa;
-}
-.folder-container,
-.sub-folder,
-.button,
-.btn-buy{
-transition:0.3s;
-}
-
-.folder-container:hover{
-transform:translateY(-3px);
-box-shadow:0 15px 35px rgba(0,0,0,0.25);
-}
-
-.sub-folder:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-.button:hover,
-.btn-buy:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 20px rgba(37,99,235,0.35);
-}
-header{
-padding:110px 20px;
-text-align:center;
-
-background:
-radial-gradient(circle at 20% 20%, rgba(59,130,246,0.35), transparent 25%),
-radial-gradient(circle at 80% 30%, rgba(37,99,235,0.25), transparent 30%),
-radial-gradient(circle at 50% 80%, rgba(124,58,237,0.18), transparent 30%),
-linear-gradient(135deg,#111827,#0f172a);
-
-background-size:200% 200%;
-animation:headerGlow 10s ease infinite alternate;
-
-position:relative;
-overflow:hidden;
-}
-
-h1{
-font-size:58px;
-margin-bottom:15px;
-}
-
-.subtitle{
-font-size:22px;
-color:#cbd5e1;
-max-width:800px;
-margin:auto;
-line-height:1.6;
-}
-
-.top-buttons{
-margin-top:35px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.button{
-padding:15px 30px;
-background:#2563eb;
-color:white;
-text-decoration:none;
-border-radius:14px;
-font-weight:bold;
-transition:0.3s;
-}
-
-.button:hover{
-background:#1d4ed8;
-}
-
-.section{
-max-width:1200px;
-margin:auto;
-padding:60px 20px;
-}
-
-.section-title{
-font-size:38px;
-margin-bottom:35px;
-text-align:center;
-}
-
-.folder-container{
-background:#1e293b;
-border-radius:18px;
-margin-bottom:20px;
-overflow:hidden;
-}
-
-.folder-header{
-padding:22px;
-cursor:pointer;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:24px;
-font-weight:bold;
-background:#172033;
-transition:0.3s;
-}
-
-.folder-header:hover{
-background:#1f2b45;
-}
-
-.folder-content{
-display:none;
-padding:20px;
-}
-
-.sub-folder{
-margin-bottom:18px;
-border-radius:18px;
-overflow:hidden;
-background:rgba(17,24,39,0.7);
-border:1px solid rgba(255,255,255,0.04);
-backdrop-filter:blur(10px);
-}
-
-.sub-header{
-padding:18px;
-cursor:pointer;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:19px;
-font-weight:bold;
-background:#182235;
-}
-
-.sub-content{
-display:none;
-padding:10px 15px 20px;
-}
-
-.shop-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:20px;
-padding:16px;
-border-bottom:1px solid #334155;
-}
-
-.doc-name{
-flex:1;
-line-height:1.5;
-}
-
-.doc-actions{
-display:flex;
-align-items:center;
-gap:15px;
-}
-
-.doc-price{
-color:#60a5fa;
-font-weight:bold;
-white-space:nowrap;
-}
-
-.btn-buy{
-background:#2563eb;
-color:white;
-padding:12px 18px;
-border-radius:12px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-display:inline-block;
-}
-
-.btn-buy:hover{
-background:#1d4ed8;
-transform:scale(1.05);
-}
-
-.btn-buy:hover{
-background:#1d4ed8;
-}
-
-footer{
-text-align:center;
-padding:50px 20px;
-color:#94a3b8;
-}
-.whatsapp-fixed{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#22c55e;
-color:white;
-padding:16px 20px;
-border-radius:999px;
-font-weight:bold;
-text-decoration:none;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
-z-index:999;
-transition:0.3s;
-}
-
-.whatsapp-fixed:hover{
-transform:scale(1.05);
-background:#16a34a;
-}
-@media(max-width:768px){
-
-h1{
-font-size:42px;
-}
-
-.subtitle{
-font-size:18px;
-}
-
-.folder-header{
-font-size:20px;
-}
-
-.sub-header{
-font-size:17px;
-}
-
-.shop-row{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px;
-border-bottom:1px solid #334155;
-gap:20px;
-transition:0.3s;
-}
-
-.shop-row:hover{
-background:#0f172a;
-}
-
-.doc-actions{
-width:100%;
-justify-content:space-between;
-}
-
-}
-.folder-container{
-background:#1e293b;
-border:1px solid #334155;
-border-radius:20px;
-margin-bottom:22px;
-overflow:hidden;
-transition:0.3s;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-.folder-container:hover{
-transform:translateY(-4px);
-box-shadow:0 20px 45px rgba(0,0,0,0.25);
-}
-.fade-in{
-opacity:0;
-transform:translateY(25px);
-animation:fadeInUp 0.8s ease forwards;
-}
-
-@keyframes fadeInUp{
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-.folder-container,
-.card,
-.section > div{
-animation:fadeInUp 0.8s ease forwards;
-}
-@keyframes headerGlow{
-
-0%{
-background-position:left top;
-}
-
-100%{
-background-position:right bottom;
-}
-
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adilet Qorgau - юридическая помощь и шаблоны документов в Казахстане</title>
+  <meta name="description" content="Юридические услуги и готовые шаблоны документов в Казахстане: МФО, банки, коллекторы, ЧСИ, банкротство физических лиц, наследство, алименты, апелляции и жалобы.">
+  <meta name="keywords" content="юрист Казахстан, шаблоны заявлений, МФО Казахстан, ЧСИ, банкротство физических лиц Казахстан, отмена исполнительной надписи, снятие запрета на выезд, алименты, наследство, апелляционная жалоба">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10233f">
+  <meta property="og:title" content="Adilet Qorgau - юридическая помощь в Казахстане">
+  <meta property="og:description" content="Подбор шаблонов, подготовка заявлений, жалоб и исков по гражданским и исполнительным делам.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/hero-legal-documents.png">
+  <link rel="preload" href="assets/hero-legal-documents.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LegalService",
+      "name": "Adilet Qorgau",
+      "areaServed": "Kazakhstan",
+      "url": "https://adiletqorgau.github.io/adilet-qorgau/",
+      "telephone": "+77789980315",
+      "description": "Юридическая помощь и шаблоны документов по МФО, ЧСИ, банкротству, наследству, семейным и судебным спорам.",
+      "sameAs": [
+        "https://wa.me/77789980315",
+        "https://t.me/77477510343"
+      ]
+    }
+  </script>
 </head>
 <body>
-
-<header class="fade-in">
-
-<h1>
-Защита от МФО, коллекторов и незаконных взысканий
-</h1>
-
-<p class="subtitle">
-Помогаем отменять судебные решения,
-аресты счетов, исполнительные надписи,
-запреты на выезд и защищать права граждан Казахстана
-</p>
-</header>
-<section style="
-max-width:1200px;
-margin:50px auto 0;
-padding:20px;
-">
-
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-">
-
-<div style="
-background:#111827;
-border:1px solid #334155;
-padding:30px;
-border-radius:24px;
-transition:0.3s;
-">
-
-<div style="font-size:42px;margin-bottom:15px;">
-⚖️
-</div>
-
-<h3 style="font-size:24px;margin-bottom:12px;">
-Судебная защита
-</h3>
-
-<p style="
-color:#cbd5e1;
-line-height:1.7;
-">
-Подготовка жалоб, исков, возражений,
-апелляций и сопровождение судебных дел.
-</p>
-
-</div>
-
-<div style="
-background:#111827;
-border:1px solid #334155;
-padding:30px;
-border-radius:24px;
-transition:0.3s;
-">
-
-<div style="font-size:42px;margin-bottom:15px;">
-🚫
-</div>
-
-<h3 style="font-size:24px;margin-bottom:12px;">
-Запрет на выезд
-</h3>
-
-<p style="
-color:#cbd5e1;
-line-height:1.7;
-">
-Помощь при ограничениях ЧСИ,
-арестах счетов и исполнительном производстве.
-</p>
-
-</div>
-
-<div style="
-background:#111827;
-border:1px solid #334155;
-padding:30px;
-border-radius:24px;
-transition:0.3s;
-">
-
-<div style="font-size:42px;margin-bottom:15px;">
-🛡️
-</div>
-
-<h3 style="font-size:24px;margin-bottom:12px;">
-МФО и коллекторы
-</h3>
-
-<p style="
-color:#cbd5e1;
-line-height:1.7;
-">
-Проверка сроков исковой давности,
-защита от незаконных взысканий и жалобы.
-</p>
-
-</div>
-
-</div>
-
-</section>
-<section style="
-max-width:1200px;
-margin:40px auto 0;
-padding:20px;
-">
-
-<div style="
-background:linear-gradient(135deg,#1e293b,#0f172a);
-border:1px solid #334155;
-border-radius:26px;
-padding:35px;
-text-align:center;
-box-shadow:0 20px 45px rgba(0,0,0,0.25);
-">
-
-<h2 style="font-size:34px;margin-bottom:15px;">
-Нужна помощь с документом или делом?
-</h2>
-
-<p style="
-color:#cbd5e1;
-font-size:18px;
-line-height:1.6;
-max-width:800px;
-margin:0 auto 25px;
-">
-Напишите нам в WhatsApp или Telegram. Поможем подобрать шаблон,
-подготовить заявление, жалобу, иск или обращение.
-</p>
-
-<div style="
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-">
-
-<a class="button"
-href="https://wa.me/77789980315"
-target="_blank">
-Получить консультацию в WhatsApp
-</a>
-
-<a class="button"
-href="https://t.me/77477510343"
-target="_blank">
-Написать в Telegram
-</a>
-
-</div>
-
-</div>
-
-</section>
-<section class="section" id="templates">
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-margin-bottom:45px;
-">
-
-<div style="background:#1e293b;padding:25px;border-radius:20px;border:1px solid #334155;">
-<h3>⚖️ Судебные документы</h3>
-<p style="color:#cbd5e1;margin-top:10px;line-height:1.6;">
-Иски, жалобы, ходатайства, заявления и возражения.
-</p>
-</div>
-
-<div style="background:#1e293b;padding:25px;border-radius:20px;border:1px solid #334155;">
-<h3>💳 МФО и банки</h3>
-<p style="color:#cbd5e1;margin-top:10px;line-height:1.6;">
-Помощь по долгам, коллекторам и срокам исковой давности.
-</p>
-</div>
-
-<div style="background:#1e293b;padding:25px;border-radius:20px;border:1px solid #334155;">
-<h3>🚫 ЧСИ и запреты</h3>
-<p style="color:#cbd5e1;margin-top:10px;line-height:1.6;">
-Снятие арестов, запретов на выезд и жалобы на ЧСИ.
-</p>
-</div>
-
-<div style="background:#1e293b;padding:25px;border-radius:20px;border:1px solid #334155;">
-<h3>📄 Банкротство физлиц</h3>
-<p style="color:#cbd5e1;margin-top:10px;line-height:1.6;">
-Документы по банкротству и восстановлению платежеспособности.
-</p>
-</div>
-
-</div>
-<h2 class="section-title">
-Каталог шаблонов
-</h2>
-<div style="
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-padding:30px;
-border-radius:24px;
-margin-bottom:35px;
-box-shadow:0 20px 45px rgba(0,0,0,0.25);
-">
-
-<h3 style="font-size:30px;margin-bottom:12px;">
-Быстрый подбор документа
-</h3>
-
-<p style="
-font-size:18px;
-color:#e0e7ff;
-line-height:1.6;
-max-width:850px;
-">
-Выберите нужный раздел или введите в поиске ключевое слово:
-МФО, ЧСИ, наследство, банкротство, алименты, апелляция, ДТП.
-</p>
-
-</div>
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-margin-bottom:40px;
-">
-
-<div style="
-background:#1e293b;
-padding:25px;
-border-radius:18px;
-border:1px solid #334155;
-">
-<div style="font-size:22px;margin-bottom:10px;">
-🔥 Популярное
-</div>
-
-<div style="line-height:1.8;color:#cbd5e1;">
-• Отмена заочного решения<br>
-• Снятие запрета на выезд<br>
-• Банкротство физлиц<br>
-• Алименты<br>
-• Наследство
-</div>
-</div>
-
-<div style="
-background:#1e293b;
-padding:25px;
-border-radius:18px;
-border:1px solid #334155;
-">
-<div style="font-size:22px;margin-bottom:10px;">
-⚖️ Услуги
-</div>
-
-<div style="line-height:1.8;color:#cbd5e1;">
-• Подготовка документов<br>
-• Жалобы и иски<br>
-• Представительство<br>
-• Консультации
-</div>
-</div>
-
-</div>
-<div style="
-background:#111827;
-padding:30px;
-border-radius:22px;
-margin-bottom:35px;
-border:1px solid #334155;
-">
-
-<h3 style="font-size:28px;margin-bottom:20px;">
-Как это работает
-</h3>
-
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-">
-
-<div>
-<b>1. Выберите шаблон</b>
-<p style="color:#cbd5e1;margin-top:8px;">
-Найдите нужный документ в каталоге.
-</p>
-</div>
-
-<div>
-<b>2. Напишите в WhatsApp</b>
-<p style="color:#cbd5e1;margin-top:8px;">
-Уточните детали и получите инструкцию.
-</p>
-</div>
-
-<div>
-<b>3. Получите документ</b>
-<p style="color:#cbd5e1;margin-top:8px;">
-Шаблон отправляется после подтверждения.
-</p>
-</div>
-
-<div>
-<b>4. Закажите помощь</b>
-<p style="color:#cbd5e1;margin-top:8px;">
-Можно заказать заполнение и доработку.
-</p>
-</div>
-
-</div>
-</div>
-<input
-type="text"
-id="searchInput"
-placeholder="Поиск шаблона..."
-onkeyup="searchTemplates()"
-style="
-width:100%;
-padding:16px;
-margin-bottom:30px;
-border-radius:14px;
-border:none;
-font-size:18px;
-outline:none;
-">
-<!-- НАСЛЕДСТВО -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="nasledstvo.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Наследственные дела
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-<!-- БАНКРОТСТВО -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="bankrotstvo.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Банкротство физических лиц
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-<!-- МФО / БАНКИ / КОЛЛЕКТОРЫ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="mfo.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 МФО, банки, коллекторы
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-<div class="folder-content">
-
-<div class="shop-row">
-<div class="doc-name">Возражение на иск МФО / банка о взыскании задолженности</div>
-<div class="doc-actions">
-<div class="doc-price">3 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Заявление о применении срока исковой давности</div>
-<div class="doc-actions">
-<div class="doc-price">2 500 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Заявление об отмене заочного / упрощенного решения суда</div>
-<div class="doc-actions">
-<div class="doc-price">3 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- ЧСИ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="chsi.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 ЧСИ и исполнительное производство
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-<div class="folder-content">
-
-<div class="shop-row">
-<div class="doc-name">Заявление ЧСИ о снятии ареста с банковских счетов</div>
-<div class="doc-actions">
-<div class="doc-price">2 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Заявление ЧСИ о снятии запрета на выезд</div>
-<div class="doc-actions">
-<div class="doc-price">2 500 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Жалоба на действия / бездействие частного судебного исполнителя</div>
-<div class="doc-actions">
-<div class="doc-price">3 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- СЕМЕЙНЫЕ СПОРЫ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="family.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Семейные споры
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-<div class="folder-content">
-
-<div class="shop-row">
-<div class="doc-name">Исковое заявление о расторжении брака</div>
-<div class="doc-actions">
-<div class="doc-price">2 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Иск о взыскании алиментов на ребенка</div>
-<div class="doc-actions">
-<div class="doc-price">2 500 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Иск о разделе совместно нажитого имущества супругов</div>
-<div class="doc-actions">
-<div class="doc-price">3 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Иск об определении места жительства ребенка</div>
-<div class="doc-actions">
-<div class="doc-price">3 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-<div class="shop-row">
-<div class="doc-name">Иск об установлении порядка общения с ребенком</div>
-<div class="doc-actions">
-<div class="doc-price">3 000 ₸</div>
-<a class="btn-buy" href="https://wa.me/77789980315" target="_blank">Купить</a>
-</div>
-</div>
-
-</div>
-</div>
-
-<!-- ДТП / УЩЕРБ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="dtp.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 ДТП, ущерб, моральный вред
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-<!-- ТРУДОВЫЕ СПОРЫ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="trud.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Трудовые споры
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-<!-- АДМИНИСТРАТИВНЫЕ ЖАЛОБЫ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="admin.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Административные жалобы
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-<!-- АПЕЛЛЯЦИИ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="appeal.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Апелляции и кассации
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-<!-- НОТАРИУС И ИСПОЛНИТЕЛЬНЫЕ НАДПИСИ -->
-
-<div class="folder-container">
-
-<div class="folder-header">
-
-<a
-href="notary.html"
-style="
-color:white;
-text-decoration:none;
-display:flex;
-justify-content:space-between;
-align-items:center;
-width:100%;
-"
->
-
-<div>
-📁 Нотариус и исполнительные надписи
-</div>
-
-<div>
-↗
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-</div>
-</div>
-</section>
-<div style="
-background:#111827;
-border:1px solid #334155;
-border-radius:24px;
-padding:35px;
-margin-top:50px;
-">
-
-<h2 style="
-font-size:34px;
-margin-bottom:20px;
-text-align:center;
-">
-Оставить заявку
-</h2>
-
-<p style="
-text-align:center;
-color:#cbd5e1;
-margin-bottom:30px;
-">
-Опишите проблему и оставьте контакты
-</p>
-
-<form style="
-display:grid;
-gap:18px;
-max-width:700px;
-margin:auto;
-">
-
-<input
-id="clientName"
-type="text"
-placeholder="Ваше имя"
-style="
-padding:16px;
-border:none;
-border-radius:14px;
-font-size:16px;
-"
->
-
-<input
-id="clientPhone"
-type="tel"
-placeholder="Ваш номер телефона"
-style="
-padding:16px;
-border:none;
-border-radius:14px;
-font-size:16px;
-"
->
-
-<textarea
-id="clientProblem"
-placeholder="Опишите проблему"
-rows="5"
-style="
-padding:16px;
-border:none;
-border-radius:14px;
-font-size:16px;
-resize:none;
-"
-></textarea>
-
-<button
-type="button"
-onclick="sendApplication()"
-style="
-padding:18px;
-background:#2563eb;
-color:white;
-border:none;
-border-radius:14px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-"
->
-Отправить заявку
-</button>
-
-</form>
-<a class="whatsapp-fixed"
-href="https://wa.me/77789980315"
-target="_blank">
-WhatsApp
-</a>
-<div style="
-max-width:1200px;
-margin:60px auto;
-padding:20px;
-">
-
-<h2 style="
-font-size:38px;
-margin-bottom:35px;
-text-align:center;
-">
-Почему выбирают Adilet Qorgau
-</h2>
-
-<div style="
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-">
-
-<div style="
-background:#1e293b;
-padding:30px;
-border-radius:24px;
-border:1px solid #334155;
-">
-
-<div style="font-size:42px;margin-bottom:15px;">
-⚖️
-</div>
-
-<h3>
-Практический опыт
-</h3>
-
-<p style="
-color:#cbd5e1;
-line-height:1.7;
-">
-Подготовка документов по МФО,
-ЧСИ, наследству,
-банкротству и судебным спорам.
-</p>
-
-</div>
-
-<div style="
-background:#1e293b;
-padding:30px;
-border-radius:24px;
-border:1px solid #334155;
-">
-
-<div style="font-size:42px;margin-bottom:15px;">
-🚀
-</div>
-
-<h3>
-Быстрая помощь
-</h3>
-
-<p style="
-color:#cbd5e1;
-line-height:1.7;
-">
-Оперативная подготовка
-заявлений, жалоб,
-исков и обращений.
-</p>
-
-</div>
-
-<div style="
-background:#1e293b;
-padding:30px;
-border-radius:24px;
-border:1px solid #334155;
-">
-
-<div style="font-size:42px;margin-bottom:15px;">
-🔒
-</div>
-
-<h3>
-Конфиденциальность
-</h3>
-
-<p style="
-color:#cbd5e1;
-line-height:1.7;
-">
-Ваши обращения
-и документы остаются
-конфиденциальными.
-</p>
-
-</div>
-
-</div>
-
-</div>
-<div style="
-max-width:1200px;
-margin:70px auto;
-padding:20px;
-">
-
-<h2 style="
-font-size:38px;
-margin-bottom:35px;
-text-align:center;
-">
-Часто задаваемые вопросы
-</h2>
-
-<div class="folder-container">
-
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div>Как получить документ?</div>
-<div>▶</div>
-</div>
-
-<div class="folder-content" style="padding:20px;color:#cbd5e1;line-height:1.8;">
-Вы выбираете нужный шаблон,
-пишите нам в WhatsApp или Telegram
-и получаете документ.
-</div>
-
-</div>
-
-<div class="folder-container">
-
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div>Можно ли заказать заполнение документа?</div>
-<div>▶</div>
-</div>
-
-<div class="folder-content" style="padding:20px;color:#cbd5e1;line-height:1.8;">
-Да, можно заказать помощь
-в заполнении и подготовке документов.
-</div>
-
-</div>
-
-<div class="folder-container">
-
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div>Работаете ли вы онлайн?</div>
-<div>▶</div>
-</div>
-
-<div class="folder-content" style="padding:20px;color:#cbd5e1;line-height:1.8;">
-Да, консультации и документы
-предоставляются онлайн по Казахстану.
-</div>
-
-</div>
-
-<div class="folder-container">
-
-<div class="folder-header" onclick="toggleMainFolder(this)">
-<div>Сколько времени занимает подготовка?</div>
-<div>▶</div>
-</div>
-
-<div class="folder-content" style="padding:20px;color:#cbd5e1;line-height:1.8;">
-В зависимости от сложности —
-от 30 минут до нескольких часов.
-</div>
-
-</div>
-
-</div>
-<footer id="contacts">
-
-<p>
-📞 +7 747 75 10 343
-</p>
-
-<p>
-📞 +7 778 998 0315
-</p>
-
-<p>
-WhatsApp / Telegram
-</p>
-
-<p>
-© 2026 Adilet Qorgau
-</p>
-
-</footer>
-
-
-<script>
-function toggleMainFolder(element){
-const content = element.nextElementSibling;
-
-if(content.style.display === "block"){
-content.style.display = "none";
-}else{
-content.style.display = "block";
-}
-}
-
-function toggleSubFolder(event, element){
-event.stopPropagation();
-
-const content = element.nextElementSibling;
-
-if(content.style.display === "block"){
-content.style.display = "none";
-}else{
-content.style.display = "block";
-}
-}
-
-function searchTemplates(){
-const input = document.getElementById("searchInput").value.toLowerCase();
-const rows = document.querySelectorAll(".shop-row");
-
-rows.forEach(function(row){
-const text = row.innerText.toLowerCase();
-const folderContent = row.closest(".folder-content");
-const subContent = row.closest(".sub-content");
-
-if(input === ""){
-row.style.display = "flex";
-}else if(text.includes(input)){
-row.style.display = "flex";
-
-if(folderContent){
-folderContent.style.display = "block";
-
-let folder = row.closest(".folder-container");
-
-if(folder){
-folder.scrollIntoView({
-behavior: "smooth",
-block: "start"
-});
-}
-}
-
-if(subContent){
-subContent.style.display = "block";
-}
-
-}else{
-row.style.display = "none";
-}
-});
-}
-function sendApplication(){
-const name = document.getElementById("clientName").value;
-const phone = document.getElementById("clientPhone").value;
-const problem = document.getElementById("clientProblem").value;
-
-const message =
-"Здравствуйте! Хочу оставить заявку.%0A%0A" +
-"Имя: " + name + "%0A" +
-"Телефон: " + phone + "%0A" +
-"Проблема: " + problem;
-
-window.open("https://wa.me/77789980315?text=" + message, "_blank");
-}
-</script>
-
+  <a class="skip-link" href="#catalog">Перейти к каталогу</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="brand" href="#top" aria-label="Adilet Qorgau">
+        <span class="brand-mark">AQ</span>
+        <span>Adilet Qorgau</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Услуги</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#process">Как работаем</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contacts">Контакты</a>
+      </div>
+      <a class="nav-cta" href="https://wa.me/77789980315?text=Здравствуйте!%20Нужна%20консультация." target="_blank" rel="noopener">
+        WhatsApp
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Онлайн по Казахстану</p>
+        <h1>Защита от МФО, коллекторов и незаконных взысканий</h1>
+        <p class="hero-text">
+          Помогаем разобраться с судебными решениями, арестами счетов, исполнительными надписями,
+          запретами на выезд и документами для суда.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#catalog">Подобрать документ</a>
+          <a class="button secondary" href="https://t.me/77477510343" target="_blank" rel="noopener">Написать в Telegram</a>
+        </div>
+        <dl class="hero-stats" aria-label="Преимущества">
+          <div>
+            <dt>30 минут</dt>
+            <dd>быстрый старт по простым документам</dd>
+          </div>
+          <div>
+            <dt>9 тем</dt>
+            <dd>каталог по частым правовым ситуациям</dd>
+          </div>
+          <div>
+            <dt>онлайн</dt>
+            <dd>консультации и документы дистанционно</dd>
+          </div>
+        </dl>
+      </div>
+      <figure class="hero-media">
+        <img src="assets/hero-legal-documents.png" alt="Юридические документы и телефон на рабочем столе">
+      </figure>
+    </section>
+
+    <section class="section service-band" id="services" aria-labelledby="services-title">
+      <div class="section-heading">
+        <p class="eyebrow">Что можно решить</p>
+        <h2 id="services-title">Юридическая помощь без лишней бюрократии</h2>
+      </div>
+      <div class="service-grid">
+        <article>
+          <span class="service-icon">01</span>
+          <h3>Судебная защита</h3>
+          <p>Иски, возражения, ходатайства, апелляции и заявления для гражданских дел.</p>
+        </article>
+        <article>
+          <span class="service-icon">02</span>
+          <h3>ЧСИ и запреты</h3>
+          <p>Жалобы, снятие арестов, запретов на выезд и работа с исполнительным производством.</p>
+        </article>
+        <article>
+          <span class="service-icon">03</span>
+          <h3>МФО и коллекторы</h3>
+          <p>Проверка сроков исковой давности, возражения и документы против незаконного взыскания.</p>
+        </article>
+        <article>
+          <span class="service-icon">04</span>
+          <h3>Личные дела</h3>
+          <p>Наследство, семейные споры, алименты, трудовые вопросы и административные жалобы.</p>
+        </article>
+      </div>
+      <div class="visual-grid" aria-label="Направления юридической помощи">
+        <figure>
+          <img src="assets/templates-desk.png" alt="Папки и юридические документы на рабочем столе" loading="lazy">
+          <figcaption>Готовые шаблоны и заявления</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/debt-support.png" alt="Документы по долгам, калькулятор и телефон на столе" loading="lazy">
+          <figcaption>МФО, банки, ЧСИ и взыскания</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/consultation-chat.png" alt="Телефон с онлайн-консультацией рядом с документами" loading="lazy">
+          <figcaption>Онлайн-консультация в WhatsApp</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section catalog-section" id="catalog" aria-labelledby="catalog-title">
+      <div class="catalog-top">
+        <div>
+          <p class="eyebrow">Каталог шаблонов</p>
+          <h2 id="catalog-title">Найдите документ по ситуации</h2>
+          <p>
+            Введите ключевое слово или выберите тему. Кнопка заказа сразу передаст название документа в WhatsApp.
+          </p>
+        </div>
+        <a class="button secondary" href="#application">Оставить заявку</a>
+      </div>
+
+      <div class="catalog-tools">
+        <label class="search-field" for="searchInput">
+          <span>Поиск</span>
+          <input id="searchInput" type="search" placeholder="Например: ЧСИ, алименты, апелляция" autocomplete="off">
+        </label>
+        <div class="filter-buttons" id="filterButtons" aria-label="Фильтр по темам"></div>
+      </div>
+
+      <div class="catalog-summary" id="catalogSummary" aria-live="polite"></div>
+      <div class="document-grid" id="documentGrid"></div>
+      <p class="empty-state" id="emptyState" hidden>
+        По этому запросу ничего не найдено. Напишите в WhatsApp, и мы подскажем ближайший вариант.
+      </p>
+    </section>
+
+    <section class="section process-section" id="process" aria-labelledby="process-title">
+      <div class="section-heading">
+        <p class="eyebrow">Как это работает</p>
+        <h2 id="process-title">От проблемы к готовому документу</h2>
+      </div>
+      <ol class="process-list">
+        <li>
+          <strong>Опишите ситуацию</strong>
+          <span>Коротко расскажите, что произошло и какие сроки уже идут.</span>
+        </li>
+        <li>
+          <strong>Получите подбор</strong>
+          <span>Подскажем шаблон или подготовку документа под вашу ситуацию.</span>
+        </li>
+        <li>
+          <strong>Проверьте детали</strong>
+          <span>Уточним суд, ЧСИ, банк, МФО, нотариуса или другую сторону дела.</span>
+        </li>
+        <li>
+          <strong>Отправьте документ</strong>
+          <span>Получите готовый текст и инструкцию по дальнейшим действиям.</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section application-section" id="application" aria-labelledby="application-title">
+      <div class="application-copy">
+        <p class="eyebrow">Быстрая заявка</p>
+        <h2 id="application-title">Не нашли нужный шаблон?</h2>
+        <p>Оставьте имя, телефон и краткое описание проблемы. Сообщение откроется в WhatsApp уже заполненным.</p>
+        <img src="assets/consultation-chat.png" alt="Рабочее место для онлайн юридической консультации" loading="lazy">
+      </div>
+      <form class="application-form" id="applicationForm">
+        <label>
+          <span>Ваше имя</span>
+          <input id="clientName" name="name" type="text" placeholder="Например, Айжан">
+        </label>
+        <label>
+          <span>Номер телефона</span>
+          <input id="clientPhone" name="phone" type="tel" placeholder="+7 ...">
+        </label>
+        <label>
+          <span>Описание проблемы</span>
+          <textarea id="clientProblem" name="problem" rows="5" placeholder="Кратко опишите ситуацию"></textarea>
+        </label>
+        <button class="button primary" type="submit">Отправить в WhatsApp</button>
+        <p class="form-note" id="formNote" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section trust-section" aria-labelledby="trust-title">
+      <div class="section-heading">
+        <p class="eyebrow">Почему Adilet Qorgau</p>
+        <h2 id="trust-title">Спокойная юридическая поддержка в понятном формате</h2>
+      </div>
+      <div class="trust-grid">
+        <article>
+          <h3>Практический подход</h3>
+          <p>Документы подбираются под реальные ситуации: МФО, ЧСИ, наследство, семейные и судебные споры.</p>
+        </article>
+        <article>
+          <h3>Быстрая связь</h3>
+          <p>Основной канал - WhatsApp и Telegram, поэтому заявку можно отправить без регистрации и кабинетов.</p>
+        </article>
+        <article>
+          <h3>Конфиденциальность</h3>
+          <p>Данные дела используются только для подготовки ответа, документа или консультации.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">Часто задаваемые вопросы</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Как получить документ?</summary>
+          <p>Выберите шаблон, нажмите кнопку заказа и отправьте сообщение в WhatsApp. После уточнения деталей документ будет передан удобным способом.</p>
+        </details>
+        <details>
+          <summary>Можно ли заказать заполнение?</summary>
+          <p>Да. Можно получить шаблон или заказать подготовку документа под вашу ситуацию.</p>
+        </details>
+        <details>
+          <summary>Работаете ли вы онлайн?</summary>
+          <p>Да, консультации и документы предоставляются онлайн по Казахстану.</p>
+        </details>
+        <details>
+          <summary>Сколько времени занимает подготовка?</summary>
+          <p>Простые документы обычно можно начать готовить быстро. Точный срок зависит от сложности дела и объема материалов.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" id="contacts">
+    <div>
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark">AQ</span>
+        <span>Adilet Qorgau</span>
+      </a>
+      <p>Юридическая помощь и шаблоны документов в Казахстане.</p>
+    </div>
+    <address>
+      <a href="tel:+77477510343">+7 747 75 10 343</a>
+      <a href="tel:+77789980315">+7 778 998 0315</a>
+      <a href="https://wa.me/77789980315" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://t.me/77477510343" target="_blank" rel="noopener">Telegram</a>
+    </address>
+    <p class="copyright">© 2026 Adilet Qorgau</p>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/77789980315?text=Здравствуйте!%20Нужна%20юридическая%20помощь." target="_blank" rel="noopener">
+    WhatsApp
+  </a>
+
+  <script src="app.js"></script>
 </body>
 </html>
